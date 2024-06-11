@@ -1,5 +1,4 @@
 // Import assets
-import logo from '../assets/images/logo.svg';
 import '../assets/styles/app.css';
 
 // Import components
