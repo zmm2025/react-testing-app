@@ -1,0 +1,16 @@
+.class-selector {
+    /* Layout */
+    display: flex;
+    width: 80%;
+    height: 80%;
+    justify-content: center;
+
+    /* Style */
+    background: var(--neutral-100);
+    color: var(--neutral-0);
+
+    thead {
+        background: var(--neutral-60);
+        color: var(--neutral-0);
+    }
+}
