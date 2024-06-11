@@ -1,7 +1,9 @@
+// Import assets
 import logo from '../assets/images/logo.svg';
 import '../assets/styles/app.css';
 
-function App() {
+// Export App component
+export default function App() {
   return (
     <div className="app">
       <header className="app-header">
@@ -19,7 +21,5 @@ function App() {
         </a>
       </header>
     </div>
-  );
+  )
 }
-
-export default App;
