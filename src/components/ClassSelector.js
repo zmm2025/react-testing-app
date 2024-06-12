@@ -69,8 +69,8 @@ const classesData = {
 }
 const classesDataDepth = 5;
 
-// Generate header cells
+// Generate table header cells
 let headerCells = [];
-for (let level = 1; level <= classesDataDepth; level++) {
-    headerCells.push(<th>Level {level}</th>);
+for (let levelIndex = 1; levelIndex <= classesDataDepth; levelIndex++) {
+    headerCells.push(<th>Level {levelIndex}</th>);
 }
