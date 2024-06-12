@@ -6,11 +6,7 @@ export default function ClassSelector() {
         <table className="class-selector">
             <thead>
                 <tr>
-                    <th>Level 1</th>
-                    <th>Level 2</th>
-                    <th>Level 3</th>
-                    <th>Level 4</th>
-                    <th>Level 5</th>
+                    {headerCells}
                 </tr>
             </thead>
             <tbody>
@@ -70,4 +66,9 @@ const classesData = {
 
     },
 }
-const classDataDepth = 5;
+const classesDataDepth = 5;
+
+let headerCells = [];
+for (let level = 1; level <= classesDataDepth; level++) {
+    headerCells.push(<th>Level {level}</th>);
+}
