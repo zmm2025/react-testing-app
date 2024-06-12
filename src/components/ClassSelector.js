@@ -29,6 +29,7 @@ export default function ClassSelector() {
     )
 }
 
+// Define classes data
 const classesData = {
     "Site Products": {
         "Ground Anchorages": {
@@ -68,6 +69,7 @@ const classesData = {
 }
 const classesDataDepth = 5;
 
+// Generate header cells
 let headerCells = [];
 for (let level = 1; level <= classesDataDepth; level++) {
     headerCells.push(<th>Level {level}</th>);
