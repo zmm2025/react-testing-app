@@ -1,16 +1,40 @@
 .class-selector {
     /* Layout */
-    display: flex;
+    display: block;
+    /* height: 80%; */
+    height: 500px;
     width: 80%;
-    height: 80%;
-    justify-content: center;
 
-    /* Style */
+    /* Appearance */
     background: var(--neutral-100);
     color: var(--neutral-0);
 
+    /* Table */
+    border-collapse: collapse;
+
     thead {
+        /* Layout */
+        align-items: center;
+        /* height: 40px; */
+        width: 100%;
+
+        /* Appearance */
         background: var(--neutral-60);
-        color: var(--neutral-0);
+    }
+
+    tbody {
+        /* width: 100%; */
+        /* height: 100%; */
+        height: 100px;
+        
+        background: var(--neutral-80);
+    }
+
+    tr {
+        height: 40px;
+    }
+
+    th, td {
+        border-color: var(--neutral-0);
     }
 }

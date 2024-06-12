@@ -15,7 +15,18 @@ export default function ClassSelector() {
             </thead>
             <tbody>
                 <tr>
-                    <th>Value 1</th>
+                    <td>Value</td>
+                    <td>Value</td>
+                    <td>Value</td>
+                    <td>Value</td>
+                    <td>Value</td>
+                </tr>
+                <tr>
+                    <td>Value</td>
+                    <td>Value</td>
+                    <td>Value</td>
+                    <td>Value</td>
+                    <td>Value</td>
                 </tr>
             </tbody>
         </table>

@@ -1,4 +1,13 @@
+body {
+  /* Layout */
+  margin: 0;
+
+  /* Text */
+  font-family: 'Open Sans', sans-serif;
+}
+
 :root {
+  /* CSS Variables */
   --neutral-0:   #000000;
   --neutral-5:   #080808;
   --neutral-10:  #161616;
@@ -11,11 +20,3 @@
   --neutral-100: #ffffff;
 }
 
-body {
-  margin: 0;
-  font-family: 'Open Sans', sans-serif;
-
-  /* ? */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
