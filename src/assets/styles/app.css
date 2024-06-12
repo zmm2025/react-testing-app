@@ -10,5 +10,5 @@
   text-align: center;
 
   /* Appearance */
-  background: var(--neutral-10);
+  background: var(--neutral-10, #161616);
 }

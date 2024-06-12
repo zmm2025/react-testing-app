@@ -4,6 +4,10 @@ body {
 
   /* Text */
   font-family: 'Open Sans', sans-serif;
+  font-size: 12px;
+
+  /* Appearance */
+  color: var(--neutral-0, #000000);
 }
 
 :root {
