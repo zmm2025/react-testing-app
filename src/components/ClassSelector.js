@@ -10,20 +10,6 @@ export default function ClassSelector() {
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Value</td>
-                    <td>Value</td>
-                    <td>Value</td>
-                    <td>Value</td>
-                    <td>Value</td>
-                </tr>
-                <tr>
-                    <td>Value</td>
-                    <td>Value</td>
-                    <td>Value</td>
-                    <td>Value</td>
-                    <td>Value</td>
-                </tr>
                 {bodyRows}
             </tbody>
         </table>
