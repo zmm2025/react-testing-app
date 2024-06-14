@@ -7,19 +7,19 @@ body {
   font-size: 12px;
 
   /* Appearance */
-  color: var(--neutral-0, #000000);
+  color: var(--neutral-1000, #000000);
 }
 
 :root {
   /* CSS Variables */
-  --neutral-0:   #000000;
-  --neutral-5:   #080808;
-  --neutral-10:  #161616;
-  --neutral-20:  #2e2e2e;
-  --neutral-40:  #5e5e5e;
-  --neutral-60:  #919191;
-  --neutral-80:  #c7c7c7;
-  --neutral-90:  #e2e2e2;
-  --neutral-95:  #f1f1f1;
-  --neutral-100: #ffffff;
+  --neutral-0:    #ffffff;
+  --neutral-50:   #f1f1f1;
+  --neutral-100:  #e2e2e2;
+  --neutral-200:  #c7c7c7;
+  --neutral-400:  #919191;
+  --neutral-600:  #5e5e5e;
+  --neutral-800:  #2e2e2e;
+  --neutral-900:  #161616;
+  --neutral-950:  #080808;
+  --neutral-1000: #000000;
 }

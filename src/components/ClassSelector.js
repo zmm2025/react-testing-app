@@ -50,7 +50,7 @@ for (let rowIndex = 0; rowIndex < childrenCount(classesData); rowIndex++) {
                 levelClass = levelClass[nextClass];
             }
         }
-        rowCells.push(<td>{cellText}</td>);
+        rowCells.push(<td id={levelIndex} className="class-button">{cellText}</td>);
     }
-    bodyRows.push(<tr>{rowCells}</tr>);
+    bodyRows.push(<tr id={rowIndex + 1}>{rowCells}</tr>);
 }

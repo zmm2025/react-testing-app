@@ -3,14 +3,14 @@
     width: 80%;
 
     /* Appearance */
-    background: var(--neutral-100, #ffffff);
+    background: var(--neutral-0, #ffffff);
 
     /* Table */
     border-collapse: collapse;
 
     thead {
         /* Appearance */
-        background: var(--neutral-60, #919191);
+        background: var(--neutral-400, #919191);
     }
 
     tr {
@@ -25,4 +25,12 @@
         /* Text */
         text-align: left;
     }
+}
+
+.class-button:hover {
+    background-color: var(--neutral-100, #e2e2e2);
+}
+
+.class-button:active {
+    background-color: var(--neutral-200, #c7c7c7);
 }
