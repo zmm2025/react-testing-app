@@ -8,29 +8,32 @@
     /* Table */
     border-collapse: collapse;
 
-    thead {
-        /* Appearance */
+    .header {
         background: var(--neutral-400, #919191);
     }
 
-    tr {
+    .row {
         /* Layout */
         height: 40px;
+
+        .cell {
+            /* Layout */
+            padding: 12px;
+    
+            /* Text */
+            text-align: left;
+        }
     }
 
-    th, td {
-        /* Layout */
-        padding: 12px;
-
-        /* Text */
-        text-align: left;
+    .column {
+        width: 200px;
     }
 }
 
-.class-button:hover {
+div.cell:hover {
     background-color: var(--neutral-100, #e2e2e2);
 }
 
-.class-button:active {
+div.cell:active {
     background-color: var(--neutral-200, #c7c7c7);
 }

@@ -4,16 +4,9 @@ import classesData from "../data/classes.json"
 
 export default function ClassSelector() {
     return (
-        <table className="class-selector">
-            <thead>
-                <tr>
-                    {headerCells}
-                </tr>
-            </thead>
-            <tbody>
-                {bodyRows}
-            </tbody>
-        </table>
+        <div className="class-selector">
+            {tableColumns}
+        </div>
     )
 }
 
@@ -26,31 +19,35 @@ function childrenCount(object) {
 const classesDataDepth = 7;
 let currentClassPath = ["Site Products", "Ground Anchorages"];
 
-// Generate table header cells
-let headerCells = [];
-for (let levelIndex = 1; levelIndex <= classesDataDepth; levelIndex++) {
-    headerCells.push(<th>Level {levelIndex}</th>);
-}
+// Initialize table columns
+let tableColumns = [];
+let levelClasses = classesData;
+for (let colIndex = 0; colIndex < classesDataDepth; colIndex++) {
+    let columnCells = [];
 
-// Generate table body rows
-let bodyRows = [];
-for (let rowIndex = 0; rowIndex < childrenCount(classesData); rowIndex++) {
-    // Generate table row cells by traversing selected classes indexing each cell's class
-    let rowCells = [];
-    let levelClass = classesData;
-    for (let levelIndex = 1; levelIndex <= classesDataDepth; levelIndex++) {
-        let cellText = "";
-        // If the cell's level is within the selected or next class,
-        // get its text and traverse to the next class if its level is selected
-        if (levelIndex <= currentClassPath.length + 1) {
-            cellText = Object.keys(levelClass)[rowIndex];
-            
-            if (levelIndex <= currentClassPath.length) {
-                let nextClass = currentClassPath[levelIndex - 1]
-                levelClass = levelClass[nextClass];
-            }
-        }
-        rowCells.push(<td id={levelIndex} className="class-button">{cellText}</td>);
+    // Add header to column
+    columnCells.push(
+        <div id="header" className="header-cell">Level {colIndex + 1}</div>
+    );
+
+    // Add classes to column
+    for (let rowIndex = 0; rowIndex < childrenCount(levelClasses); rowIndex++) {
+        let rowClass = Object.keys(levelClasses)[rowIndex];
+
+        columnCells.push(
+            <div id={rowIndex} className="cell">{rowClass}</div>
+        );
     }
-    bodyRows.push(<tr id={rowIndex + 1}>{rowCells}</tr>);
+
+    // Add column to array
+    tableColumns.push(
+        <div id={colIndex} className="column">{columnCells}</div>
+    );
+
+    if (colIndex < currentClassPath.length) {
+        let selectedClass = currentClassPath[colIndex];
+        levelClasses = levelClasses[selectedClass];
+    } else {
+        levelClasses = {};
+    }
 }
