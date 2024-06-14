@@ -26,18 +26,17 @@ for (let colIndex = 0; colIndex < classesDataDepth; colIndex++) {
     let columnCells = [];
 
     // Add header to column
-    columnCells.push(
-        <div id="header" className="header-cell">Level {colIndex + 1}</div>
-    );
+    columnCells.push(<div id="header" className="header">Level {colIndex + 1}</div>);
 
-    // Add classes to column
+    // Initialize body cells
+    let columnBodyCells = [];
     for (let rowIndex = 0; rowIndex < childrenCount(levelClasses); rowIndex++) {
         let rowClass = Object.keys(levelClasses)[rowIndex];
-
-        columnCells.push(
-            <div id={rowIndex} className="cell">{rowClass}</div>
-        );
+        columnBodyCells.push(<div id={rowIndex} className="body-cell">{rowClass}</div>);
     }
+
+    // Add body to column
+    columnCells.push(<div id="body" className="body">{columnBodyCells}</div>)
 
     // Add column to array
     tableColumns.push(
