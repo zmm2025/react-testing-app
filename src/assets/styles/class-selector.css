@@ -1,39 +1,43 @@
 .class-selector {
     /* Layout */
+    display: flex;
+    height: 80%;
+    overflow-x: scroll;
+    overflow-y: hidden;
     width: 80%;
 
     /* Appearance */
     background: var(--neutral-0, #ffffff);
 
-    /* Table */
-    border-collapse: collapse;
-
-    .header {
-        background: var(--neutral-400, #919191);
+    .column {
+        width: 33%;
+        overflow-y: scroll;
     }
 
-    .row {
+    .header-cell {
+        background: var(--neutral-400, #919191);
+        padding: 12px;
+        height: 40px;
+        position: fixed;
+    }
+
+
+    .cell {
         /* Layout */
         height: 40px;
+        overflow: hidden;
+        padding: 12px;
 
-        .cell {
-            /* Layout */
-            padding: 12px;
-    
-            /* Text */
-            text-align: left;
-        }
-    }
-
-    .column {
-        width: 200px;
+        /* Text */
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
 }
 
-div.cell:hover {
+.cell:hover {
     background-color: var(--neutral-100, #e2e2e2);
 }
 
-div.cell:active {
+.cell:active {
     background-color: var(--neutral-200, #c7c7c7);
 }
