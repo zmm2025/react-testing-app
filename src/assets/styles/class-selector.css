@@ -1,43 +1,59 @@
 .class-selector {
     /* Layout */
     display: flex;
-    height: 80%;
+    height: 80vh;
+    width: 80vw;
     overflow-x: scroll;
     overflow-y: hidden;
-    width: 80%;
 
     /* Appearance */
     background: var(--neutral-0, #ffffff);
-
-    .column {
-        width: 33%;
-        overflow-y: scroll;
-    }
-
-    .header-cell {
-        background: var(--neutral-400, #919191);
-        padding: 12px;
-        height: 40px;
-        position: fixed;
-    }
-
-
-    .cell {
-        /* Layout */
-        height: 40px;
-        overflow: hidden;
-        padding: 12px;
-
-        /* Text */
-        text-overflow: ellipsis;
-        white-space: nowrap;
-    }
 }
 
-.cell:hover {
+.column {
+    /* Layout */
+    width: 33%;
+}
+
+.header {
+    /* Layout */
+    height: 40px;
+    padding: 12px;
+
+    /* Appearance */
+    background: var(--neutral-400, #919191);
+    }
+
+.body {
+    overflow-y: scroll;
+
+    /* Hide scrollbar - IE, Edge, Firefox */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Hide scrollbar - Chrome, Safari, Opera */
+.column::-webkit-scrollbar {
+    display: none;
+}
+
+.body-cell {
+    /* Layout */
+    height: 40px;
+    overflow: hidden;
+    padding: 12px;
+
+    /* Text */
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.body-cell:hover {
+    /* Appearance */
     background-color: var(--neutral-100, #e2e2e2);
 }
 
-.cell:active {
+.body-cell:active {
+    /* Appearance */
     background-color: var(--neutral-200, #c7c7c7);
 }
