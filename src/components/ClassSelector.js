@@ -1,13 +1,13 @@
 // Import assets
 import '../assets/styles/class-selector.css';
-import classesData from "../data/classes.json"
+import classesData from "../data/classes.json";
 
 export default function ClassSelector() {
     return (
         <div className="class-selector">
             {tableColumns}
         </div>
-    )
+    );
 }
 
 // Define helper functions
