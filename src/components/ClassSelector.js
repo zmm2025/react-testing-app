@@ -39,9 +39,7 @@ for (let colIndex = 0; colIndex < classesDataDepth; colIndex++) {
     columnCells.push(<div id="body" className="body">{columnBodyCells}</div>)
 
     // Add column to array
-    tableColumns.push(
-        <div id={colIndex} className="column">{columnCells}</div>
-    );
+    tableColumns.push(<div id={colIndex} className="column">{columnCells}</div>);
 
     if (colIndex < currentClassPath.length) {
         let selectedClass = currentClassPath[colIndex];
