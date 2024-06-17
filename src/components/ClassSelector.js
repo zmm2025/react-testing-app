@@ -26,20 +26,20 @@ for (let colIndex = 0; colIndex < classesDataDepth; colIndex++) {
     let columnCells = [];
 
     // Add header to column
-    columnCells.push(<div id="header" className="header">Level {colIndex + 1}</div>);
+    columnCells.push(<div className="header">Level {colIndex + 1}</div>);
 
     // Initialize body cells
     let columnBodyCells = [];
     for (let rowIndex = 0; rowIndex < childrenCount(levelClasses); rowIndex++) {
         let rowClass = Object.keys(levelClasses)[rowIndex];
-        columnBodyCells.push(<div id={rowIndex} className="body-cell">{rowClass}</div>);
+        columnBodyCells.push(<div className="body-cell">{rowClass}</div>);
     }
 
     // Add body to column
-    columnCells.push(<div id="body" className="body">{columnBodyCells}</div>)
+    columnCells.push(<div className="body">{columnBodyCells}</div>)
 
     // Add column to array
-    tableColumns.push(<div id={colIndex} className="column">{columnCells}</div>);
+    tableColumns.push(<div className="column">{columnCells}</div>);
 
     if (colIndex < currentClassPath.length) {
         let selectedClass = currentClassPath[colIndex];
