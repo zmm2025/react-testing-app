@@ -21,7 +21,7 @@
 
 .column {
     /* Layout */
-    min-width: calc(100% / 3);
+    min-width: calc((100% - 1px - 1px) / 3);
 }
 
 .header {
@@ -34,10 +34,18 @@
     background: var(--neutral-400, #919191);
 }
 
+.horizontal-divider {
+    /* Layout */
+    min-height: 1px;
+
+    /* Appearance */
+    background-color: var(--neutral-600, #5e5e5e);
+}
+
 .body {
     /* Layout */
     width: 100%;
-    height: 100%;
+    height: calc(100% - 40px - 1px);
     overflow-y: auto;
 }
 
@@ -61,4 +69,12 @@
         /* Appearance */
         background-color: var(--neutral-200, #c7c7c7);
     }
+}
+
+.vertical-divider {
+    /* Layout */
+    min-width: 1px;
+
+    /* Appearance */
+    background-color: var(--neutral-600, #5e5e5e);
 }

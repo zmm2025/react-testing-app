@@ -5,7 +5,7 @@ import classesData from "../data/classes.json";
 export default function ClassSelector() {
     return (
         <div className="class-selector">
-            {tableColumns}
+            {selectorColumns}
         </div>
     );
 }
@@ -19,8 +19,8 @@ function childrenCount(object) {
 const classesDataDepth = 7;
 let currentClassPath = ["Site Products", "Ground Anchorages"];
 
-// Initialize table columns
-let tableColumns = [];
+// Initialize class selector columns
+let selectorColumns = [];
 let levelClasses = classesData;
 for (let colIndex = 0; colIndex < classesDataDepth; colIndex++) {
     let columnCells = [];
@@ -30,6 +30,11 @@ for (let colIndex = 0; colIndex < classesDataDepth; colIndex++) {
         <div className="header">
             Level {colIndex + 1}
         </div>
+    );
+
+    // Add horizontal divider to column
+    columnCells.push(
+        <div className="horizontal-divider" />
     );
 
     // Initialize body cells
@@ -51,10 +56,15 @@ for (let colIndex = 0; colIndex < classesDataDepth; colIndex++) {
     );
 
     // Add column to array
-    tableColumns.push(
+    selectorColumns.push(
         <div className="column">
             {columnCells}
         </div>
+    );
+
+    // Add vertical divider to array
+    selectorColumns.push(
+        <div className="vertical-divider" />
     );
 
     // Traverse to next level
