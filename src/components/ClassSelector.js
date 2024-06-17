@@ -57,6 +57,7 @@ for (let colIndex = 0; colIndex < classesDataDepth; colIndex++) {
         </div>
     );
 
+    // Traverse to next level
     if (colIndex < currentClassPath.length) {
         let selectedClass = currentClassPath[colIndex];
         levelClasses = levelClasses[selectedClass];
