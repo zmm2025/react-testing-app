@@ -42,9 +42,9 @@ for (let colIndex = 0; colIndex < classesDataDepth; colIndex++) {
     for (let rowIndex = 0; rowIndex < childrenCount(levelClasses); rowIndex++) {
         let rowClass = Object.keys(levelClasses)[rowIndex];
         columnBodyCells.push(
-            <div className="body-cell">
+            <button className="body-cell">
                 {rowClass}
-            </div>
+            </button>
         );
     }
 
