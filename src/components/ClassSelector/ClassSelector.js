@@ -1,15 +1,33 @@
 import { Fragment, useEffect, useState } from "react";
 import level1Classes from "../../data/classes.json";
+import SelectorCell from "../SelectorCell/SelectorCell";
 import "./ClassSelector.css";
 
 export default function ClassSelector() {
-    const classesDataDepth = 7; // TODO: make this dynamically calculated from JSON (if used)
-
     const [classPath, setClassPath] = useState([]);
     const [levels, setLevels] = useState([Object.keys(level1Classes)]);
 
     // Update levels every time the class path is updated
-    useEffect(() => updateLevels(), [classPath]);
+    useEffect(() => {
+        // Update all class selector based on the current class path
+        function updateLevels() {
+            let newLevels = [];
+            
+            // Push level 1 to levels array
+            let levelClasses = level1Classes;
+            newLevels.push(Object.keys(levelClasses));
+
+            // Push all other selected levels to levels array
+            for (const pathClass of classPath) {
+                levelClasses = levelClasses[pathClass];
+                newLevels.push(Object.keys(levelClasses));
+            }
+
+            setLevels(newLevels);
+        }
+
+        updateLevels();
+    }, [classPath]);
 
     // Update the class path so that the selected class is the deepest selected class
     function updateClassPath(selectedClass, classLevelNum) {
@@ -17,26 +35,8 @@ export default function ClassSelector() {
         newClassPath.push(selectedClass);
         setClassPath(newClassPath);
     }
-    
-    // Update all class selector based on the current class path
-    function updateLevels() {
-        let newLevels = [];
-        
-        // Push level 1 to levels array
-        let levelClasses = level1Classes;
-        newLevels.push(Object.keys(levelClasses));
-
-        // Push all other selected levels to levels array
-        for (const pathClass of classPath) {
-            levelClasses = levelClasses[pathClass];
-            newLevels.push(Object.keys(levelClasses));
-        }
-
-        setLevels(newLevels);
-    }
 
     function handleCellClick(cellClass, cellLevelNum) {
-        
         updateClassPath(cellClass, cellLevelNum);
     }
 
@@ -45,11 +45,14 @@ export default function ClassSelector() {
         const levelNum = colIndex + 1;
         
         // Initialize column body cells
-        let columnBodyCells = level.map((className, rowIndex) => {
+        let columnBodyCells = level.map((className) => {
             return (
-                <div key={className} className="col-body-cell" onClick={() => handleCellClick(className, levelNum)}>
-                    {className}
-                </div>
+                <SelectorCell
+                    key={className}
+                    classText={className}
+                    onClick={() => handleCellClick(className, levelNum)}
+                    classPath={classPath}
+                />
             );
         })
 
