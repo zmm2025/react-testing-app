@@ -22,9 +22,10 @@
 .column {
     /* Layout */
     min-width: calc((100% - 1px - 1px) / 3);
+    max-width: calc((100% - 1px - 1px) / 3);
 }
 
-.header {
+.col-header {
     /* Layout */
     height: 40px;
     padding: 0px 12px;
@@ -42,18 +43,20 @@
     background-color: var(--neutral-600, #5e5e5e);
 }
 
-.body {
+.col-body {
     /* Layout */
     width: 100%;
     height: calc(100% - 40px - 1px);
+    overflow-x: hidden;
     overflow-y: auto;
 }
 
-.body-cell {
+.col-body-cell {
     /* Layout */
-    width: 100%;
+    width: calc(100% - 24px);
     height: 40px;
     padding: 0px 12px;
+    align-content: center;
     overflow: hidden;
 
     /* Appearance */

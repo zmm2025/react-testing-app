@@ -42,7 +42,7 @@ export default function ClassSelector() {
         // Initialize column body cells
         let columnBodyCells = level.map((className, rowIndex) => {
             return (
-                <div key={className} className="body-cell" onClick={() => updateClassPath(className, levelNum)}>
+                <div key={className} className="col-body-cell" onClick={() => updateClassPath(className, levelNum)}>
                     {className}
                 </div>
             );
@@ -51,15 +51,15 @@ export default function ClassSelector() {
         return (
             <Fragment key={levelNum}>
                 <div key={"level-" + levelNum} className="column">
-                    <div className="header">
+                    <div className="col-header">
                         Level {levelNum}
                     </div>
-                    <div className="horizontal-separator" />
-                    <div className="body">
+                    <div className="horizontal-divider" />
+                    <div className="col-body">
                         {columnBodyCells}
                     </div>
                 </div>
-                <div key={"level-" + levelNum + "-sep"} className="vertical-separator" />
+                <div key={"level-" + levelNum + "-sep"} className="vertical-divider" />
             </Fragment>
         );
     });
