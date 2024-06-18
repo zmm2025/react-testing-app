@@ -1,6 +1,6 @@
-import "../assets/styles/class-selector.css";
-import level1Classes from "../data/classes.json";
-import { useEffect, useState, Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
+import level1Classes from "../../data/classes.json";
+import "./ClassSelector.css";
 
 export default function ClassSelector() {
     const classesDataDepth = 7; // TODO: make this dynamically calculated from JSON (if used)
@@ -35,6 +35,11 @@ export default function ClassSelector() {
         setLevels(newLevels);
     }
 
+    function handleCellClick(cellClass, cellLevelNum) {
+        
+        updateClassPath(cellClass, cellLevelNum);
+    }
+
     // Initialize class selector columns
     let selectorColumns = levels.map((level, colIndex) => {
         const levelNum = colIndex + 1;
@@ -42,7 +47,7 @@ export default function ClassSelector() {
         // Initialize column body cells
         let columnBodyCells = level.map((className, rowIndex) => {
             return (
-                <div key={className} className="col-body-cell" onClick={() => updateClassPath(className, levelNum)}>
+                <div key={className} className="col-body-cell" onClick={() => handleCellClick(className, levelNum)}>
                     {className}
                 </div>
             );

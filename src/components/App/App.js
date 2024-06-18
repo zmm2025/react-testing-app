@@ -1,8 +1,5 @@
-// Import assets
-import './assets/styles/app.css';
-
-// Import components
-import ClassSelector from './components/ClassSelector';
+import ClassSelector from '../ClassSelector/ClassSelector';
+import './App.css';
 
 // Export App component
 export default function App() {
