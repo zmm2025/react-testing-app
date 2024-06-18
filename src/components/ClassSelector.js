@@ -1,19 +1,24 @@
 import "../assets/styles/class-selector.css";
 import level1Classes from "../data/classes.json";
-import { useState } from "react";
+import { useEffect, useState, Fragment } from "react";
 
 export default function ClassSelector() {
-    const classesDataDepth = 7; // TODO: make this dynamically calculated from JSON
+    const classesDataDepth = 7; // TODO: make this dynamically calculated from JSON (if used)
 
-    const [classPath, setClassPath] = useState(["Site Products", "Ground Anchorages"]); // TEMP: Default test value
-    const [levels, setLevels] = useState(updateLevels(classPath));
-    
+    const [classPath, setClassPath] = useState([]);
+    const [levels, setLevels] = useState([Object.keys(level1Classes)]);
+
+    // Update levels every time the class path is updated
+    useEffect(() => updateLevels(), [classPath]);
+
+    // Update the class path so that the selected class is the deepest selected class
     function updateClassPath(selectedClass, classLevelNum) {
-        let newClassPath = classPath.slice(classLevelNum - 0).push(selectedClass);
+        let newClassPath = classPath.slice(0, classLevelNum - 1);
+        newClassPath.push(selectedClass);
         setClassPath(newClassPath);
-        updateLevels();
     }
     
+    // Update all class selector based on the current class path
     function updateLevels() {
         let newLevels = [];
         
@@ -30,26 +35,32 @@ export default function ClassSelector() {
         setLevels(newLevels);
     }
 
-    function childrenCount(object) {
-        return Object.keys(object).length;
-    }
-
+    // Initialize class selector columns
     let selectorColumns = levels.map((level, colIndex) => {
         const levelNum = colIndex + 1;
-        // CONTINUE HERE
         
-        // let columnBodyCells = 
+        // Initialize column body cells
+        let columnBodyCells = level.map((className, rowIndex) => {
+            return (
+                <div key={className} className="body-cell" onClick={() => updateClassPath(className, levelNum)}>
+                    {className}
+                </div>
+            );
+        })
 
         return (
-            <div className="column">
-                <div className="header">
-                    Level {levelNum}
+            <Fragment key={levelNum}>
+                <div key={"level-" + levelNum} className="column">
+                    <div className="header">
+                        Level {levelNum}
+                    </div>
+                    <div className="horizontal-separator" />
+                    <div className="body">
+                        {columnBodyCells}
+                    </div>
                 </div>
-                <div className="horizontal-separator" />
-                <div className="body">
-                    {columnbodyCells}
-                </div>
-            </div>
+                <div key={"level-" + levelNum + "-sep"} className="vertical-separator" />
+            </Fragment>
         );
     });
     
@@ -58,64 +69,4 @@ export default function ClassSelector() {
             {selectorColumns}
         </div>
     );
-}
-
-// Initialize class selector columns
-let selectorColumns = [];
-
-let levelClasses = level1Classes;
-for (let colIndex = 0; colIndex < classesDataDepth; colIndex++) {
-    let columnCells = [];
-
-    let levelNum = colIndex + 1;
-
-    // Add header to column
-    columnCells.push(
-        <div className="header">
-            Level {levelNum}
-        </div>
-    );
-
-    // Add horizontal divider to column
-    columnCells.push(
-        <div className="horizontal-divider" />
-    );
-
-    // Initialize body cells
-    let columnBodyCells = [];
-    for (let rowIndex = 0; rowIndex < childrenCount(levelClasses); rowIndex++) {
-        let rowClass = Object.keys(levelClasses)[rowIndex];
-        columnBodyCells.push(
-            <button className="body-cell" onClick={updatePath(rowClass, levelNum)}>
-                {rowClass}
-            </button>
-        );
-    }
-
-    // Add body to column
-    columnCells.push(
-        <div className="body">
-            {columnBodyCells}
-        </div>
-    );
-
-    // Add column to array
-    selectorColumns.push(
-        <div className="column">
-            {columnCells}
-        </div>
-    );
-
-    // Add vertical divider to array
-    selectorColumns.push(
-        <div className="vertical-divider" />
-    );
-
-    // Traverse to next level
-    if (colIndex < currentClassPath.length) {
-        let selectedClass = currentClassPath[colIndex];
-        levelClasses = levelClasses[selectedClass];
-    } else {
-        levelClasses = {};
-    }
 }
