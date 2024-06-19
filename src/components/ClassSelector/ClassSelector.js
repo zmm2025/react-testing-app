@@ -53,6 +53,7 @@ export default function ClassSelector() {
                     classText={className}
                     onClick={() => handleCellClick(className, levelNum)}
                     classPath={classPath}
+                    hasChildren={true} // TODO: Make this dynamic
                 />
             );
         })

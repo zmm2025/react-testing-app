@@ -1,33 +1,29 @@
 .class-selector {
     /* Layout */
-    width: 80vw;
-    height: 80vh;
     display: flex;
+    height: 80vh;
     overflow-x: scroll;
     overflow-y: hidden;
+    width: 80vw;
 
     /* Appearance */
     background: var(--neutral-0, #ffffff);
     
     /* Other */
     scrollbar-width: none;
-    -ms-overflow-style: none;
-
-    &::-webkit-scrollbar {
-        display: none;
-    }
 }
 
 .column {
-    min-width: calc((100% - 1px - 1px) / 3);
+    /* Layout */
     max-width: calc((100% - 1px - 1px) / 3);
+    min-width: calc((100% - 1px - 1px) / 3);
 }
 
 .col-header {
     /* Layout */
+    align-content: center;
     height: 40px;
     padding: 0px 12px;
-    align-content: center;
 
     /* Appearance */
     background: var(--neutral-400, #919191);
@@ -43,37 +39,10 @@
 
 .col-body {
     /* Layout */
-    width: 100%;
     height: calc(100% - 40px - 1px);
     overflow-x: hidden;
     overflow-y: auto;
-}
-
-.col-body-cell {
-    /* Layout */
-    width: calc(100% - 24px);
-    height: 40px;
-    padding: 0px 12px;
-    align-content: center;
-    overflow: hidden;
-
-    /* Appearance */
-    background: none;
-    border: none;
-    cursor: pointer;
-
-    /* Text */
-    text-align: left;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-
-    &:hover {
-        background-color: var(--neutral-100, #e2e2e2);
-    }
-
-    &:active {
-        background-color: var(--neutral-200, #c7c7c7);
-    }
+    width: 100%;
 }
 
 .vertical-divider {

@@ -1,39 +1,62 @@
-.cell {
+div.cell {
     /* Layout */
-    width: calc(100% - 24px);
+    align-items: center;
+    display: flex;
     height: 40px;
-    padding: 0px 12px;
-    align-content: center;
-    overflow: hidden;
 
     /* Appearance */
-    border: none;
     cursor: pointer;
-
-    /* Text */
-    text-align: left;
-    text-overflow: ellipsis;
-    white-space: nowrap;
 }
 
-.selected {
+div.selected {
+    /* Appearance */
     background-color: var(--blue-500, #5596E6);
 
     &:hover {
+        /* Appearance */
         background-color: var(--blue-400, #3775D9);
     }
 
     &:active {
+        /* Appearance */
         background-color: var(--blue-500, #5596E6);
     }
 }
 
-.unselected {
+div.unselected {
     &:hover {
+        /* Appearance */
         background-color: var(--neutral-100, #e2e2e2);
     }
 
     &:active {
+        /* Appearance */
         background-color: var(--neutral-200, #c7c7c7);
     }
+}
+
+p.text {
+    /* Layout */
+    overflow: hidden;
+    margin-left: 12px;
+    margin-right: 12px;
+    width: calc(100% - 40px);
+    
+    /* Text */
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+div.icon-wrapper {
+    /* Layout */
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    width: 40px;
+}
+
+svg.icon {
+    /* Layout */
+    display: block;
+    margin-right: 12px;
 }
