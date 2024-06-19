@@ -42,11 +42,11 @@ export default function ClassSelector() {
     }
 
     // Initialize class selector columns
-    let selectorColumns = levels.map((level, colIndex) => {
+    const selectorColumns = levels.map((level, colIndex) => {
         const levelNum = colIndex + 1;
         
         // Initialize column body cells
-        let columnBodyCells = level.map((className) => {
+        const columnBodyCells = level.map((className) => {
             return (
                 <SelectorCell
                     key={className}
