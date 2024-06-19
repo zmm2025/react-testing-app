@@ -9,7 +9,7 @@ export default function ClassSelector() {
 
     // Update levels every time the class path is updated
     useEffect(() => {
-        // Update all class selector based on the current class path
+        // Update all class selector levels based on the current class path
         function updateLevels() {
             let newLevels = [];
             
@@ -56,7 +56,7 @@ export default function ClassSelector() {
                     hasChildren={true} // TODO: Make this dynamic
                 />
             );
-        })
+        });
 
         return (
             <Fragment key={levelNum}>
@@ -70,7 +70,6 @@ export default function ClassSelector() {
                         {columnBodyCells}
                     </div>
                 </div>
-                <div key={"level-" + levelNum + "-sep"} className="vertical-divider" />
             </Fragment>
         );
     });
