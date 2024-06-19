@@ -60,6 +60,7 @@ export default function ClassSelector() {
 
         return (
             <Fragment key={levelNum}>
+                {levelNum > 1 && <div key={"level-" + levelNum + "-sep"} className="vertical-divider" />}
                 <div key={"level-" + levelNum} className="column">
                     <div className="col-header">
                         Level {levelNum}
