@@ -36,6 +36,7 @@ export default function ClassSelector() {
         setClassPath(newClassPath);
     }
 
+    // Update the class path when a cell is clicked
     function handleCellClick(cellClass, cellLevelNum) {
         updateClassPath(cellClass, cellLevelNum);
     }
