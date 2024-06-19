@@ -1,0 +1,32 @@
+.class-selector {
+    /* Layout */
+    display: flex;
+    height: 80vh;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    width: 80vw;
+
+    /* Appearance */
+    background: var(--neutral-0, #ffffff);
+    
+    /* Other */
+    scrollbar-width: none;
+}
+
+.column {
+    /* Layout */
+    max-width: calc((100% - 1px - 1px) / 3);
+    min-width: calc((100% - 1px - 1px) / 3);
+}
+
+.divider {
+
+}
+
+.header-cell {
+    
+}
+
+.column-body {
+
+}
