@@ -1,4 +1,4 @@
-.class-selector {
+div.class-selector {
     /* Layout */
     display: flex;
     height: 80vh;
@@ -13,13 +13,28 @@
     scrollbar-width: none;
 }
 
-.column {
+div.column {
     /* Layout */
     max-width: calc((100% - 1px - 1px) / 3);
     min-width: calc((100% - 1px - 1px) / 3);
 }
 
-.col-header {
+div.divider {
+    /* Appearance */
+    background-color: var(--neutral-600, #5e5e5e);
+}
+
+div.divider.horizontal {
+    /* Layout */
+    min-height: 1px;
+}
+
+div.divider.vertical {
+    /* Layout */
+    min-width: 1px;
+}
+
+div.header-cell {
     /* Layout */
     align-content: center;
     height: 40px;
@@ -29,15 +44,7 @@
     background: var(--neutral-400, #919191);
 }
 
-.horizontal-divider {
-    /* Layout */
-    min-height: 1px;
-
-    /* Appearance */
-    background-color: var(--neutral-600, #5e5e5e);
-}
-
-.col-body {
+div.column-body {
     /* Layout */
     height: calc(100% - 40px - 1px);
     overflow-x: hidden;
@@ -45,10 +52,59 @@
     width: 100%;
 }
 
-.vertical-divider {
+div.cell {
     /* Layout */
-    min-width: 1px;
+    align-items: center;
+    display: flex;
+    height: 40px;
 
     /* Appearance */
-    background-color: var(--neutral-600, #5e5e5e);
+    cursor: pointer;
+
+    
+    &.selected {
+        /* Appearance */
+        background-color: var(--blue-500, #5596E6);
+    
+        &:hover {
+            /* Appearance */
+            background-color: var(--blue-400, #3775D9);
+        }
+    
+        &:active {
+            /* Appearance */
+            background-color: var(--blue-500, #5596E6);
+        }
+    }
+
+    &.unselected {
+        &:hover {
+            /* Appearance */
+            background-color: var(--neutral-100, #e2e2e2);
+        }
+        
+        &:active {
+            /* Appearance */
+            background-color: var(--neutral-200, #c7c7c7);
+        }
+        
+    }
+    
+    p.cell-text {
+        /* Layout */
+        overflow: hidden;
+        margin-left: 12px;
+        margin-right: 12px;
+        width: calc(100% - 40px);
+        
+        /* Text */
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    svg.chevron {
+        /* Layout */
+        display: block;
+        margin-right: 12px;
+    }
 }

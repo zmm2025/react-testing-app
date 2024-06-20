@@ -1,82 +1,112 @@
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useState } from "react";
 import level1Classes from "../../data/classes.json";
-import SelectorCell from "../SelectorCell/SelectorCell";
+import { ReactComponent as RightChevron } from "../../images/chevron_right.svg";
 import "./ClassSelector.css";
 
-export default function ClassSelector() {
+export default function ClassSelectorV2() {
     const [classPath, setClassPath] = useState([]);
-    const [levels, setLevels] = useState([Object.keys(level1Classes)]);
-
-    // Update levels every time the class path is updated
-    useEffect(() => {
-        // Update all class selector levels based on the current class path
-        function updateLevels() {
-            let newLevels = [];
-            
-            // Push level 1 to levels array
-            let levelClasses = level1Classes;
-            newLevels.push(Object.keys(levelClasses));
-
-            // Push all other selected levels to levels array
-            for (const pathClass of classPath) {
-                levelClasses = levelClasses[pathClass];
-                newLevels.push(Object.keys(levelClasses));
-            }
-
-            setLevels(newLevels);
-        }
-
-        updateLevels();
-    }, [classPath]);
-
-    // Update the class path so that the selected class is the deepest selected class
-    function updateClassPath(selectedClass, classLevelNum) {
-        let newClassPath = classPath.slice(0, classLevelNum - 1);
-        newClassPath.push(selectedClass);
-        setClassPath(newClassPath);
-    }
-
-    // Update the class path when a cell is clicked
-    function handleCellClick(cellClass, cellLevelNum) {
-        updateClassPath(cellClass, cellLevelNum);
-    }
-
-    // Initialize class selector columns
-    const selectorColumns = levels.map((level, colIndex) => {
-        const levelNum = colIndex + 1;
-        
-        // Initialize column body cells
-        const columnBodyCells = level.map((className) => {
-            return (
-                <SelectorCell
-                    key={className}
-                    classText={className}
-                    onClick={() => handleCellClick(className, levelNum)}
-                    classPath={classPath}
-                    hasChildren={true} // TODO: Make this dynamic
-                />
-            );
-        });
-
+    
+    // Assemble selector columns
+    let levelClasses = level1Classes;
+    let columns = [ // TODO: Combine this with lower definition
+        <Column
+            key={"level-1"}
+            levelNum={1}
+            levelClasses={levelClasses}
+            classPath={classPath}
+            setClassPath={setClassPath}
+        />
+    ];
+    const remainingColumns = classPath.map((pathClass, pathIndex) => {
+        const levelNum = pathIndex + 2;
+        levelClasses = levelClasses[pathClass];
         return (
-            <Fragment key={levelNum}>
-                {levelNum > 1 && <div key={"level-" + levelNum + "-sep"} className="vertical-divider" />}
-                <div key={"level-" + levelNum} className="column">
-                    <div className="col-header">
-                        Level {levelNum}
-                    </div>
-                    <div className="horizontal-divider" />
-                    <div className="col-body">
-                        {columnBodyCells}
-                    </div>
-                </div>
+            <Fragment key={"level-" + levelNum + "-fragment"}>
+                <Divider orientation="vertical" />
+                <Column
+                    levelNum={levelNum}
+                    levelClasses={levelClasses}
+                    classPath={classPath}
+                    setClassPath={setClassPath}
+                />
             </Fragment>
         );
     });
+    columns.push(...remainingColumns);
     
     return (
         <div className="class-selector">
-            {selectorColumns}
+            {columns}
+        </div>
+    );
+}
+
+function Column({ levelNum, levelClasses, classPath, setClassPath }) {
+    return (
+        <div className="column">
+            <HeaderCell levelNum={levelNum} />
+            <Divider orientation="horizontal" />
+            <ColumnBody
+                levelClasses={levelClasses}
+                classPath={classPath}
+                levelNum={levelNum}
+                setClassPath={setClassPath}
+            />
+        </div>
+    );
+}
+
+function Divider({ orientation }) {
+    return (
+        <div className={"divider " + orientation} /> // TODO: Double check the className formatting on this
+    );
+}
+
+function HeaderCell({ levelNum }) {
+    return (
+        <div className="header-cell">
+            <p>Level {levelNum}</p>
+        </div>
+    );
+}
+
+function ColumnBody({ levelClasses, classPath, levelNum, setClassPath }) {
+    function updateClassPath(selectedClassName, classLevelNum) {
+        let newClassPath = classPath.slice(0, classLevelNum - 1);
+        newClassPath.push(selectedClassName);
+        setClassPath(newClassPath);
+    }
+    
+    // Assemble column body cells
+    const cells = Object.entries(levelClasses).map(([cellClassName, cls]) => {
+        const hasChildren = Object.keys(cls).length;
+        const isSelected = classPath.includes(cellClassName);
+
+        return (
+            <Cell
+                key={cellClassName}
+                cellClassName={cellClassName}
+                hasChildren={hasChildren}
+                isSelected={isSelected}
+                onClick={() => updateClassPath(cellClassName, levelNum)}
+            />
+        );
+    });
+
+    return (
+        <div className="column-body">
+            {cells}
+        </div>
+    );
+}
+
+function Cell({ cellClassName, hasChildren, isSelected, onClick }) {
+    const styleClass = "cell " + (isSelected ? "selected" : "unselected");
+
+    return (
+        <div className={styleClass} onClick={onClick}>
+            <p className="cell-text">{cellClassName}</p>
+            {hasChildren && <RightChevron className="chevron" />}
         </div>
     );
 }
