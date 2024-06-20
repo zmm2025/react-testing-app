@@ -10,6 +10,7 @@ export default function ClassSelectorV2() {
     let levelClasses = level1Classes;
     let columns = [ // TODO: Combine this with lower definition
         <Column
+            key={"level-1"}
             levelNum={1}
             levelClasses={levelClasses}
             classPath={classPath}
@@ -17,10 +18,10 @@ export default function ClassSelectorV2() {
         />
     ];
     const remainingColumns = classPath.map((pathClass, pathIndex) => {
-        const levelNum = pathIndex + 1;
+        const levelNum = pathIndex + 2;
         levelClasses = levelClasses[pathClass];
         return (
-            <Fragment>
+            <Fragment key={"level-" + levelNum + "-fragment"}>
                 <Divider orientation="vertical" />
                 <Column
                     levelNum={levelNum}
@@ -42,7 +43,7 @@ export default function ClassSelectorV2() {
 
 function Column({ levelNum, levelClasses, classPath, setClassPath }) {
     return (
-        <div key={"column-level-" + levelNum} className="column">
+        <div className="column">
             <HeaderCell levelNum={levelNum} />
             <Divider orientation="horizontal" />
             <ColumnBody
@@ -83,6 +84,7 @@ function ColumnBody({ levelClasses, classPath, levelNum, setClassPath }) {
 
         return (
             <Cell
+                key={cellClassName}
                 cellClassName={cellClassName}
                 hasChildren={hasChildren}
                 isSelected={isSelected}
