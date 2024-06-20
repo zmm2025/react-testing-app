@@ -7,15 +7,17 @@ export default function ClassSelectorV2() {
     const [classPath, setClassPath] = useState([]);
     
     // Assemble selector columns
+    let levelClasses = level1Classes;
     let columns = [
-        <Column levelNum={1} />
+        <Column levelNum={1} levelClasses={levelClasses}/>
     ];
     const remainingColumns = classPath.map((pathClass, pathIndex) => {
         const levelNum = pathIndex + 1;
+        levelClasses = levelClasses[pathClass];
         return (
             <Fragment>
                 <Divider orientation="vertical" />
-                <Column levelNum={levelNum}/>
+                <Column levelNum={levelNum} levelClasses={levelClasses}/>
             </Fragment>
         );
     });
@@ -28,12 +30,12 @@ export default function ClassSelectorV2() {
     );
 }
 
-function Column({ levelNum }) {
+function Column({ levelNum, levelClasses }) {
     return (
         <div key={"column-level-" + levelNum} className="column">
             <HeaderCell levelNum={levelNum} />
             <Divider orientation="horizontal" />
-            <ColumnBody levelClasses={{}} /> {/* TODO: Generalize levelClasses */}
+            <ColumnBody levelClasses={levelClasses} />
         </div>
     );
 }
