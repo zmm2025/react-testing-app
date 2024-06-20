@@ -72,7 +72,7 @@ function HeaderCell({ levelNum }) {
 
 function ColumnBody({ levelClasses, classPath, levelNum, setClassPath }) {
     function updateClassPath(selectedClassName, classLevelNum) {
-        let newClassPath = classPath.slice(0, classLevelNum);
+        let newClassPath = classPath.slice(0, classLevelNum - 1);
         newClassPath.push(selectedClassName);
         setClassPath(newClassPath);
     }
