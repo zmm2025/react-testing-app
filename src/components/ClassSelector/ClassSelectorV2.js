@@ -8,8 +8,13 @@ export default function ClassSelectorV2() {
     
     // Assemble selector columns
     let levelClasses = level1Classes;
-    let columns = [
-        <Column levelNum={1} levelClasses={levelClasses} classPath={classPath}/> // TODO: Combine this with lower definition
+    let columns = [ // TODO: Combine this with lower definition
+        <Column
+            levelNum={1}
+            levelClasses={levelClasses}
+            classPath={classPath}
+            setClassPath={setClassPath}
+        />
     ];
     const remainingColumns = classPath.map((pathClass, pathIndex) => {
         const levelNum = pathIndex + 1;
@@ -17,7 +22,12 @@ export default function ClassSelectorV2() {
         return (
             <Fragment>
                 <Divider orientation="vertical" />
-                <Column levelNum={levelNum} levelClasses={levelClasses} classPath={classPath}/>
+                <Column
+                    levelNum={levelNum}
+                    levelClasses={levelClasses}
+                    classPath={classPath}
+                    setClassPath={setClassPath}
+                />
             </Fragment>
         );
     });
@@ -30,12 +40,17 @@ export default function ClassSelectorV2() {
     );
 }
 
-function Column({ levelNum, levelClasses, classPath }) {
+function Column({ levelNum, levelClasses, classPath, setClassPath }) {
     return (
         <div key={"column-level-" + levelNum} className="column">
             <HeaderCell levelNum={levelNum} />
             <Divider orientation="horizontal" />
-            <ColumnBody levelClasses={levelClasses} classPath={classPath}/>
+            <ColumnBody
+                levelClasses={levelClasses}
+                classPath={classPath}
+                levelNum={levelNum}
+                setClassPath={setClassPath}
+            />
         </div>
     );
 }
@@ -54,7 +69,13 @@ function HeaderCell({ levelNum }) {
     );
 }
 
-function ColumnBody({ levelClasses, classPath }) {
+function ColumnBody({ levelClasses, classPath, levelNum, setClassPath }) {
+    function updateClassPath(selectedClassName, classLevelNum) {
+        let newClassPath = classPath.slice(0, classLevelNum);
+        newClassPath.push(selectedClassName);
+        setClassPath(newClassPath);
+    }
+    
     // Assemble column body cells
     const cells = Object.entries(levelClasses).map(([cellClassName, cls]) => {
         const hasChildren = Object.keys(cls).length;
@@ -65,6 +86,7 @@ function ColumnBody({ levelClasses, classPath }) {
                 cellClassName={cellClassName}
                 hasChildren={hasChildren}
                 isSelected={isSelected}
+                onClick={() => updateClassPath(cellClassName, levelNum)}
             />
         );
     });
@@ -76,11 +98,11 @@ function ColumnBody({ levelClasses, classPath }) {
     );
 }
 
-function Cell({ cellClassName, hasChildren, isSelected }) {
+function Cell({ cellClassName, hasChildren, isSelected, onClick }) {
     const styleClass = "cell2 " + (isSelected ? "selected" : "unselected");
 
     return (
-        <div className={styleClass}>
+        <div className={styleClass} onClick={onClick}>
             <p className="cell-text">{cellClassName}</p>
             {hasChildren && <RightChevron className="chevron" />}
         </div>
