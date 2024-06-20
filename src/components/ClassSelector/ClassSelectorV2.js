@@ -73,7 +73,7 @@ function ColumnBody({ levelClasses }) {
 
 function Cell({ cellClassName, hasChildren }) {
     return (
-        <div className="cell">
+        <div className="cell2 unselected">
             <p className="cell-text">{cellClassName}</p>
             {hasChildren && <RightChevron className="chevron" />}
         </div>
