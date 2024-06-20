@@ -6,21 +6,11 @@ import "./ClassSelector.css";
 export default function ClassSelectorV2() {
     const [classPath, setClassPath] = useState([]);
 
-    // Assemble selector columns
-    let columns = [];
-    let levelClasses = level1Classes;
-    for (let levelNum = 1; levelNum <= classPath.length + 1; levelNum++) {
-        // Step into next level class if this isn't the first level
-        if (levelNum >= 2) {
-            const pathIndex = levelNum - 2;
-            const pathClass = classPath[pathIndex];
-            levelClasses = levelClasses[pathClass];
-        }
-        
-        // Add column to array
-        columns.push(
+    // If levelNum is null, levelClasses must remain empty
+    function pushLevelElements(elementsArray, levelNum = null, levelClasses = {}, hasDivider = true) {
+        elementsArray.push(
             <Fragment key={"level-" + levelNum + "-fragment"}>
-                {levelNum === 1 ? null : <Divider orientation="vertical" />} {/* Skip divider for first column */}
+                {hasDivider ? <Divider orientation="vertical" /> : null}
                 <Column
                     levelNum={levelNum}
                     levelClasses={levelClasses}
@@ -29,11 +19,23 @@ export default function ClassSelectorV2() {
                 />
             </Fragment>
         );
+        return elementsArray;
     }
+
+    // Assemble selector elements
+    let elementsArray = [];
+    let levelClasses = level1Classes;
+    pushLevelElements(elementsArray, 1, levelClasses, false);
+    for (const [pathIndex, pathClass] of classPath.entries()) {
+        levelClasses = levelClasses[pathClass];
+        const levelNum = pathIndex + 2;
+        pushLevelElements(elementsArray, levelNum, levelClasses);
+    }
+    pushLevelElements(elementsArray);
 
     return (
         <div className="class-selector">
-            {columns}
+            {elementsArray}
         </div>
     );
 }
@@ -60,7 +62,7 @@ function Divider({ orientation }) {
 }
 
 function HeaderCell({ levelNum }) {
-    const text = levelNum === 0 ? null : <p>Level {levelNum}</p>;
+    const text = levelNum === null ? null : <p>Level {levelNum}</p>;
     
     return (
         <div className="header-cell">
