@@ -5,7 +5,7 @@ import "./ClassSelector.css";
 
 export default function ClassSelectorV2() {
     const [classPath, setClassPath] = useState([]);
-    
+
     // Assemble selector columns
     let columns = [];
     let levelClasses = level1Classes;
@@ -20,7 +20,7 @@ export default function ClassSelectorV2() {
         // Add column to array
         columns.push(
             <Fragment key={"level-" + levelNum + "-fragment"}>
-                {levelNum == 1 ? null : <Divider orientation="vertical" />} {/* Skip divider for first column */}
+                {levelNum === 1 ? null : <Divider orientation="vertical" />} {/* Skip divider for first column */}
                 <Column
                     levelNum={levelNum}
                     levelClasses={levelClasses}
@@ -60,9 +60,11 @@ function Divider({ orientation }) {
 }
 
 function HeaderCell({ levelNum }) {
+    const text = levelNum === 0 ? null : <p>Level {levelNum}</p>;
+    
     return (
         <div className="header-cell">
-            <p>Level {levelNum}</p>
+            {text}
         </div>
     );
 }
