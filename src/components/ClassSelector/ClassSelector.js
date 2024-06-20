@@ -106,7 +106,7 @@ function Cell({ cellClassName, hasChildren, isSelected, onClick }) {
     return (
         <div className={styleClass} onClick={onClick}>
             <p className="cell-text">{cellClassName}</p>
-            {hasChildren && <RightChevron className="chevron" />}
+            {hasChildren ? <RightChevron className="chevron" /> : null}
         </div>
     );
 }
