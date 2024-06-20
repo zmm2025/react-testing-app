@@ -7,22 +7,20 @@ export default function ClassSelectorV2() {
     const [classPath, setClassPath] = useState([]);
     
     // Assemble selector columns
+    let columns = [];
     let levelClasses = level1Classes;
-    let columns = [ // TODO: Combine this with lower definition
-        <Column
-            key={"level-1"}
-            levelNum={1}
-            levelClasses={levelClasses}
-            classPath={classPath}
-            setClassPath={setClassPath}
-        />
-    ];
-    const remainingColumns = classPath.map((pathClass, pathIndex) => {
-        const levelNum = pathIndex + 2;
-        levelClasses = levelClasses[pathClass];
-        return (
+    for (let levelNum = 1; levelNum <= classPath.length + 1; levelNum++) {
+        // Step into next level class if this isn't the first level
+        if (levelNum >= 2) {
+            const pathIndex = levelNum - 2;
+            const pathClass = classPath[pathIndex];
+            levelClasses = levelClasses[pathClass];
+        }
+        
+        // Add column to array
+        columns.push(
             <Fragment key={"level-" + levelNum + "-fragment"}>
-                <Divider orientation="vertical" />
+                {levelNum == 1 ? null : <Divider orientation="vertical" />} {/* Skip divider for first column */}
                 <Column
                     levelNum={levelNum}
                     levelClasses={levelClasses}
@@ -31,9 +29,8 @@ export default function ClassSelectorV2() {
                 />
             </Fragment>
         );
-    });
-    columns.push(...remainingColumns);
-    
+    }
+
     return (
         <div className="class-selector">
             {columns}
