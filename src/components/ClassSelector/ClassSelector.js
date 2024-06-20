@@ -58,7 +58,7 @@ function Column({ levelNum, levelClasses, classPath, setClassPath }) {
 
 function Divider({ orientation }) {
     return (
-        <div className={"divider " + orientation} /> // TODO: Double check the className formatting on this
+        <div className={"divider " + orientation} />
     );
 }
 
