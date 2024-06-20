@@ -9,7 +9,7 @@ export default function ClassSelectorV2() {
     // Assemble selector columns
     let levelClasses = level1Classes;
     let columns = [
-        <Column levelNum={1} levelClasses={levelClasses}/>
+        <Column levelNum={1} levelClasses={levelClasses} classPath={classPath}/> // TODO: Combine this with lower definition
     ];
     const remainingColumns = classPath.map((pathClass, pathIndex) => {
         const levelNum = pathIndex + 1;
@@ -17,7 +17,7 @@ export default function ClassSelectorV2() {
         return (
             <Fragment>
                 <Divider orientation="vertical" />
-                <Column levelNum={levelNum} levelClasses={levelClasses}/>
+                <Column levelNum={levelNum} levelClasses={levelClasses} classPath={classPath}/>
             </Fragment>
         );
     });
@@ -30,12 +30,12 @@ export default function ClassSelectorV2() {
     );
 }
 
-function Column({ levelNum, levelClasses }) {
+function Column({ levelNum, levelClasses, classPath }) {
     return (
         <div key={"column-level-" + levelNum} className="column">
             <HeaderCell levelNum={levelNum} />
             <Divider orientation="horizontal" />
-            <ColumnBody levelClasses={levelClasses} />
+            <ColumnBody levelClasses={levelClasses} classPath={classPath}/>
         </div>
     );
 }
@@ -54,13 +54,18 @@ function HeaderCell({ levelNum }) {
     );
 }
 
-function ColumnBody({ levelClasses }) {
+function ColumnBody({ levelClasses, classPath }) {
     // Assemble column body cells
     const cells = Object.entries(levelClasses).map(([cellClassName, cls]) => {
         const hasChildren = Object.keys(cls).length;
+        const isSelected = classPath.includes(cellClassName);
 
         return (
-            <Cell cellClassName={cellClassName} hasChildren={hasChildren}/>
+            <Cell
+                cellClassName={cellClassName}
+                hasChildren={hasChildren}
+                isSelected={isSelected}
+            />
         );
     });
 
@@ -71,9 +76,11 @@ function ColumnBody({ levelClasses }) {
     );
 }
 
-function Cell({ cellClassName, hasChildren }) {
+function Cell({ cellClassName, hasChildren, isSelected }) {
+    const styleClass = "cell2 " + (isSelected ? "selected" : "unselected");
+
     return (
-        <div className="cell2 unselected">
+        <div className={styleClass}>
             <p className="cell-text">{cellClassName}</p>
             {hasChildren && <RightChevron className="chevron" />}
         </div>
