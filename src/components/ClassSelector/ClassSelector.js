@@ -25,12 +25,20 @@ export default function ClassSelectorV2() {
     // Assemble selector elements
     let elementsArray = [];
     let levelClasses = level1Classes;
+
     pushLevelElements(elementsArray, 1, levelClasses, false);
+    
     for (const [pathIndex, pathClass] of classPath.entries()) {
         levelClasses = levelClasses[pathClass];
+
+        if (Object.keys(levelClasses).length == 0) {
+            break;
+        }
+
         const levelNum = pathIndex + 2;
         pushLevelElements(elementsArray, levelNum, levelClasses);
     }
+
     pushLevelElements(elementsArray);
 
     return (
