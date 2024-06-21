@@ -3,7 +3,7 @@ import level1Classes from "../../data/classes.json";
 import { ReactComponent as RightChevron } from "../../images/chevron_right.svg";
 import "./ClassSelector.css";
 
-export default function ClassSelectorV2() {
+export default function ClassSelector() {
     const [classPath, setClassPath] = useState([]);
     const selectorRef = useRef(null);
 
