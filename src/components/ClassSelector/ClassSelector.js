@@ -82,7 +82,7 @@ function ColumnBody({ levelClasses, classPath, levelNum, setClassPath }) {
     
     // Assemble column body cells
     const cells = Object.entries(levelClasses).map(([cellClassName, cls]) => {
-        const hasChildren = Object.keys(cls).length;
+        const hasChildren = Object.keys(cls).length > 0;
         const isSelected = classPath.includes(cellClassName);
 
         return (
