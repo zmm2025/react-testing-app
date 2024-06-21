@@ -1,10 +1,33 @@
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import level1Classes from "../../data/classes.json";
 import { ReactComponent as RightChevron } from "../../images/chevron_right.svg";
 import "./ClassSelector.css";
 
 export default function ClassSelectorV2() {
     const [classPath, setClassPath] = useState([]);
+    const selectorRef = useRef(null);
+
+    useEffect(() => {
+        scrollSelectorToLevel("right", classPath.length + 1);
+    }, [classPath]);
+
+    function scrollSelectorToLevel(direction, selectedLevelNum) {
+        const [minLevelNum, maxLevelNum] = [1, classPath.length + 1];
+        
+        const focalLevelOffset = direction === "left" ? -1 : 1;
+        const focalLevelNum = Math.max(Math.min(minLevelNum, selectedLevelNum + focalLevelOffset), maxLevelNum);
+        const focalElementIndex = 2 * (focalLevelNum - 1);
+        const focalElement = selectorRef.current.children[focalElementIndex];
+        
+        focalElement.scrollIntoView();
+    }
+
+    function updateClassPath(selectedClassName, classLevelNum) {
+        let newClassPath = classPath.slice(0, classLevelNum - 1);
+        newClassPath.push(selectedClassName);
+        scrollSelectorToLevel("left", classLevelNum);
+        setClassPath(newClassPath);
+    }
 
     // Undefined levelNum and levelClasses will generate a filler column
     function pushLevelElements(elementsArray, levelNum = null, levelClasses = {}, hasDivider = true) {
@@ -15,7 +38,7 @@ export default function ClassSelectorV2() {
                     levelNum={levelNum}
                     levelClasses={levelClasses}
                     classPath={classPath}
-                    setClassPath={setClassPath}
+                    updateClassPath={updateClassPath}            
                 />
             </Fragment>
         );
@@ -42,13 +65,13 @@ export default function ClassSelectorV2() {
     pushLevelElements(elementsArray);
 
     return (
-        <div className="class-selector">
+        <div className="class-selector" ref={selectorRef}>
             {elementsArray}
         </div>
     );
 }
 
-function Column({ levelNum, levelClasses, classPath, setClassPath }) {
+function Column({ levelNum, levelClasses, classPath, updateClassPath }) {
     const styleClass = "column" + (Object.keys(levelClasses).length === 0 ? " filler" : "");
     
     return (
@@ -59,7 +82,7 @@ function Column({ levelNum, levelClasses, classPath, setClassPath }) {
                 levelClasses={levelClasses}
                 classPath={classPath}
                 levelNum={levelNum}
-                setClassPath={setClassPath}
+                updateClassPath={updateClassPath}
             />
         </div>
     );
@@ -81,13 +104,7 @@ function HeaderCell({ levelNum }) {
     );
 }
 
-function ColumnBody({ levelClasses, classPath, levelNum, setClassPath }) {
-    function updateClassPath(selectedClassName, classLevelNum) {
-        let newClassPath = classPath.slice(0, classLevelNum - 1);
-        newClassPath.push(selectedClassName);
-        setClassPath(newClassPath);
-    }
-    
+function ColumnBody({ levelClasses, classPath, levelNum, updateClassPath }) {
     // Assemble column body cells
     const cells = Object.entries(levelClasses).map(([cellClassName, cls]) => {
         const hasChildren = Object.keys(cls).length > 0;

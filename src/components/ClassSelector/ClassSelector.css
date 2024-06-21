@@ -6,6 +6,8 @@ div.class-selector {
     overflow-y: hidden;
     width: 80vw;
 
+    scroll-behavior: smooth;
+
     /* Appearance */
     background: var(--neutral-0, #ffffff);
     
