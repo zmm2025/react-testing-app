@@ -31,7 +31,7 @@ export default function ClassSelectorV2() {
     for (const [pathIndex, pathClass] of classPath.entries()) {
         levelClasses = levelClasses[pathClass];
 
-        if (Object.keys(levelClasses).length == 0) {
+        if (Object.keys(levelClasses).length === 0) {
             break;
         }
 
