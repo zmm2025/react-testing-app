@@ -6,7 +6,7 @@ import "./ClassSelector.css";
 export default function ClassSelectorV2() {
     const [classPath, setClassPath] = useState([]);
 
-    // If levelNum is null, levelClasses must remain empty
+    // Undefined levelNum and levelClasses will generate a filler column
     function pushLevelElements(elementsArray, levelNum = null, levelClasses = {}, hasDivider = true) {
         elementsArray.push(
             <Fragment key={"level-" + levelNum + "-fragment"}>
@@ -41,8 +41,10 @@ export default function ClassSelectorV2() {
 }
 
 function Column({ levelNum, levelClasses, classPath, setClassPath }) {
+    const styleClass = "column" + (Object.keys(levelClasses).length === 0 ? " filler" : "");
+    
     return (
-        <div className="column">
+        <div className={styleClass}>
             <HeaderCell levelNum={levelNum} />
             <Divider orientation="horizontal" />
             <ColumnBody
