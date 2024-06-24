@@ -15,7 +15,7 @@ div.class-selector {
     scrollbar-width: none;
 }
 
-div.selector-column {
+div.column {
     /* Layout */
     max-width: calc((100% - 1px - 1px) / 3);
     min-width: calc((100% - 1px - 1px) / 3);
@@ -108,11 +108,21 @@ div.cell {
         /* Text */
         text-overflow: ellipsis;
         white-space: nowrap;
+
+        &.hover {
+            /* Appearance */
+            color: var(--neutral-400, #919191);
+        }
     }
 
-    svg.cell-chevron {
+    svg.chevron {
         /* Layout */
         display: block;
         margin-right: 12px;
+
+        &.hover {
+            /* Appearance */
+            fill: rgba(0, 0, 0, 0.216);
+        }
     }
 }
