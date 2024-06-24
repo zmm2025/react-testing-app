@@ -52,7 +52,7 @@ function SelectorColumn({ levelNum, isHoverColumn = false }) {
 }
 
 function Divider({ orientation }) {
-    const dividerCSSClass = "divider " + orientation;
+    const dividerCSSClass = `divider ${orientation}`;
     
     return (
         <div className={dividerCSSClass} />
