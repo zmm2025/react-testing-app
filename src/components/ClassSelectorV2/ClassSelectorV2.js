@@ -17,9 +17,10 @@ export default function ClassSelectorV2() {
 }
 
 function SelectorElements() {
+    let levelNum = 1;
     const selectedClasses = useContext(SelectedClassesContext);
     const dividerOrientation = "vertical";
-    let levelNum = 1;
+    const needsFillerColumn = selectedClasses.length == 0;
     
     return (
         <>
@@ -35,11 +36,19 @@ function SelectorElements() {
             })}
             <Divider orientation={dividerOrientation} />
             <SelectorColumn levelNum={++levelNum} isHoverColumn={true} />
+            {needsFillerColumn ? (
+                <>
+                    <Divider orientation={dividerOrientation} />
+                    <SelectorColumn />
+                </>
+            ) : (
+                null
+            )}
         </>
     )
 }
 
-function SelectorColumn({ levelNum, isHoverColumn = false }) {
+function SelectorColumn({ levelNum = null, isHoverColumn = false }) {
     const columnCSSClass = "selector-column";
     
     return (
