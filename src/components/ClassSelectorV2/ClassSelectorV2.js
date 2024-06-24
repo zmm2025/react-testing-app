@@ -5,10 +5,11 @@ const SelectedClassesContext = createContext([]);
 
 export default function ClassSelectorV2() {
     const initialSelectedClasses = [];
+    const selectorCSSClass = "class-selector";
     
     return (
         <SelectedClassesContext.Provider value={initialSelectedClasses}>
-            <div className="class-selector">
+            <div className={selectorCSSClass}>
                 <SelectorElements />
             </div>
         </SelectedClassesContext.Provider>
@@ -39,13 +40,17 @@ function SelectorElements() {
 }
 
 function SelectorColumn({ levelNum, isHoverColumn = false }) {
+    const columnCSSClass = "selector-column";
+    
     return (
-        <div className="selector-column" />
+        <div className={columnCSSClass} />
     )
 }
 
 function Divider({ orientation }) {
+    const dividerCSSClass = "divider " + orientation;
+    
     return (
-        <div className={"divider " + orientation} />
+        <div className={dividerCSSClass} />
     )
 }
