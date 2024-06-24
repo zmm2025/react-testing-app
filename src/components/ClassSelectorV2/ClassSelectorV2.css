@@ -15,7 +15,7 @@ div.class-selector {
     scrollbar-width: none;
 }
 
-div.column {
+div.selector-column {
     /* Layout */
     max-width: calc((100% - 1px - 1px) / 3);
     min-width: calc((100% - 1px - 1px) / 3);
