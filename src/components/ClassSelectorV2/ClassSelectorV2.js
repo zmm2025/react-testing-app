@@ -20,7 +20,7 @@ function SelectorElements() {
     let levelNum = 1;
     const selectedClasses = useContext(SelectedClassesContext);
     const dividerOrientation = "vertical";
-    const needsFillerColumn = selectedClasses.length == 0;
+    const needsFillerColumn = selectedClasses.length === 0;
     
     return (
         <>
@@ -70,11 +70,11 @@ function Divider({ orientation }) {
 
 function HeaderCell({ levelNum = null }) {
     const cellCSSClass = "header-cell";
-    const headerText = levelNum ? `Level ${levelNum}` : "";
+    const headerText = levelNum ? <p>{`Level ${levelNum}`}</p> : "";
     
     return (
         <div className={cellCSSClass}>
-            <p>{headerText}</p>
+            {headerText}
         </div>
     )
 }
