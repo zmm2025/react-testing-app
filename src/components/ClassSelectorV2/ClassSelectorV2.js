@@ -1,4 +1,5 @@
 import { createContext, useContext } from "react";
+import level1Classes from "../../data/classes.json";
 import "./ClassSelectorV2.css";
 
 const SelectedClassesContext = createContext([]);
@@ -80,9 +81,37 @@ function HeaderCell({ levelNum = null }) {
 }
 
 function ColumnBody({ levelNum }) {
+    const selectedClasses = useContext(SelectedClassesContext);
     const bodyCSSClass = "column-body";
+    
+    let levelClasses = level1Classes;
+    if (levelNum === null) {
+        levelClasses = {};
+    } else {
+        for (let levelIndex = 1; levelIndex < Math.min(selectedClasses.length + 1, levelNum); levelIndex++) {
+            const selectedLevelClass = selectedClasses[levelIndex];
+            levelClasses = levelClasses[selectedLevelClass];
+        }
+    }
+    const levelClassEntries = Object.entries(levelClasses);
 
     return (
-        <div className={bodyCSSClass} />
+        <div className={bodyCSSClass}>
+            {levelClassEntries.map(([name, children], index) => {
+                const hasChildren = children.length > 0;
+                return (
+                    <Cell key={index} cellClassName={name} hasChildren={hasChildren} />
+                )
+            })}
+        </div>
+    )
+}
+
+function Cell({ cellClassName, hasChildren }) {
+    // const cellCSSClass = `cell ${isSelected ? "selected" : "unselected"}`;
+    const cellCSSClass = "cell";
+
+    return (
+        <div className={cellCSSClass} />
     )
 }
