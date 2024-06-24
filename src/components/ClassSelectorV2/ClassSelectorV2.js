@@ -43,7 +43,11 @@ function SelectorColumn({ levelNum, isHoverColumn = false }) {
     const columnCSSClass = "selector-column";
     
     return (
-        <div className={columnCSSClass} />
+        <div className={columnCSSClass}>
+            <HeaderCell levelNum={levelNum} />
+            <Divider orientation={"horizontal"} />
+            <ColumnBody levelNum={levelNum} />
+        </div>
     )
 }
 
@@ -52,5 +56,21 @@ function Divider({ orientation }) {
     
     return (
         <div className={dividerCSSClass} />
+    )
+}
+
+function HeaderCell({ levelNum }) {
+    const cellCSSClass = "header-cell";
+    
+    return (
+        <div className={cellCSSClass} />
+    )
+}
+
+function ColumnBody({ levelNum }) {
+    const bodyCSSClass = "column-body";
+
+    return (
+        <div className={bodyCSSClass} />
     )
 }
