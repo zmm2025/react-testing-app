@@ -1,5 +1,6 @@
 import { createContext, useContext } from "react";
 import level1Classes from "../../data/classes.json";
+import { ReactComponent as RightChevron } from "../../images/chevron_right.svg";
 import "./ClassSelectorV2.css";
 
 const SelectedClassesContext = createContext([]);
@@ -71,11 +72,15 @@ function Divider({ orientation }) {
 
 function HeaderCell({ levelNum = null }) {
     const cellCSSClass = "header-cell";
-    const headerText = levelNum ? <p>{`Level ${levelNum}`}</p> : "";
+    const levelIsDefined = levelNum !== null;
     
     return (
         <div className={cellCSSClass}>
-            {headerText}
+            {levelIsDefined ? (
+                <p>{`Level ${levelNum}`}</p>
+            ) : (
+                null
+            )}
         </div>
     )
 }
@@ -98,7 +103,7 @@ function ColumnBody({ levelNum }) {
     return (
         <div className={bodyCSSClass}>
             {levelClassEntries.map(([name, children], index) => {
-                const hasChildren = children.length > 0;
+                const hasChildren = Object.keys(children).length > 0;
                 return (
                     <Cell key={index} cellClassName={name} hasChildren={hasChildren} />
                 )
@@ -108,10 +113,18 @@ function ColumnBody({ levelNum }) {
 }
 
 function Cell({ cellClassName, hasChildren }) {
-    // const cellCSSClass = `cell ${isSelected ? "selected" : "unselected"}`;
-    const cellCSSClass = "cell";
+    const selectedClasses = useContext(SelectedClassesContext);
+    const isSelected = selectedClasses.includes(cellClassName);
+    const cellCSSClass = `cell ${isSelected ? "selected" : "unselected"}`;
 
     return (
-        <div className={cellCSSClass} />
+        <div className={cellCSSClass}>
+            <p className="cell-text">{cellClassName}</p>
+            {hasChildren ? (
+                <RightChevron className="cell-chevron" />
+            ) : (
+                null
+            )}
+        </div>
     )
 }

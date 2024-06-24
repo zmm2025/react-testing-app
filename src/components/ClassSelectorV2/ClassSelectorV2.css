@@ -110,7 +110,7 @@ div.cell {
         white-space: nowrap;
     }
 
-    svg.chevron {
+    svg.cell-chevron {
         /* Layout */
         display: block;
         margin-right: 12px;
