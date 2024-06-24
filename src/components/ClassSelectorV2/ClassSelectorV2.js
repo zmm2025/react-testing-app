@@ -59,11 +59,14 @@ function Divider({ orientation }) {
     )
 }
 
-function HeaderCell({ levelNum }) {
+function HeaderCell({ levelNum = null }) {
     const cellCSSClass = "header-cell";
+    const headerText = levelNum ? `Level ${levelNum}` : "";
     
     return (
-        <div className={cellCSSClass} />
+        <div className={cellCSSClass}>
+            <p>{headerText}</p>
+        </div>
     )
 }
 
