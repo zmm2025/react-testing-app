@@ -4,8 +4,8 @@ import "./ClassSelectorV2.css";
 const SelectedClassesContext = createContext([]);
 
 export default function ClassSelectorV2() {
-    const initialSelectedClasses = [];
     const selectorCSSClass = "class-selector";
+    const initialSelectedClasses = [];
     
     return (
         <SelectedClassesContext.Provider value={initialSelectedClasses}>
