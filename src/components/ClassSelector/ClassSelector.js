@@ -64,20 +64,19 @@ export default function ClassSelector() {
         let newSelectedClasses = selectedClasses.slice(0, selectedClassLevel - 1);
         newSelectedClasses.push(selectedClass);
 
-        const selectedClassesGrew = newSelectedClasses.length > selectedClasses.length;
+        const selectedClassesShrunk = newSelectedClasses.length < selectedClasses.length;
 
-        if (selectedClassesGrew) {
-            setSelectedClasses(newSelectedClasses);
-
-        } else {
-            const previousLevel = Math.max(1, selectedClassLevel - 1);
+        if (selectedClassesShrunk) {
+            const previousLevel = Math.max(1, selectedClassLevel);
             scrollSelectorToLevel(previousLevel);
-
+            
             // "scrollend" compatibility: https://caniuse.com/mdn-api_element_scrollend_event
             selectorRef.current.addEventListener("scrollend", () => {
                 setSelectedClasses(newSelectedClasses);
             }, {once: true});
         
+        } else {
+            setSelectedClasses(newSelectedClasses);
         }
     }
 
