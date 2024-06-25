@@ -1,5 +1,6 @@
-import { createContext, useContext, useEffect, useRef, useState, Fragment } from "react";
+import { Fragment, createContext, useContext, useEffect, useRef, useState } from "react";
 import level1Classes from "../../data/classes.json";
+import { usePrevious } from "../../hooks/usePrevious.js";
 import { ReactComponent as RightChevron } from "../../images/chevron_right.svg";
 import "./ClassSelectorV2.css";
 
@@ -9,6 +10,11 @@ const ColumnTypes = Object.freeze({
     HOVER_PREVIEW: "hover-preview",
     FILLER:        "filler"
 });
+
+const ScrollDirection = Object.freeze({
+    LEFT:  "left",
+    RIGHT: "right"
+})
 
 const SelectorContext = createContext({
     selectedClasses: [],
@@ -23,32 +29,49 @@ const ColumnContext = createContext({
 });
 
 export default function ClassSelectorV2() {
-    const selectorCSSClass = "class-selector";
-    const selectorRef = useRef(null);
-    
-    const [selectedClasses, setSelectedClasses] = useState([]);
-    const [hoveredClass, setHoveredClass] = useState(null);
+    const initialSelectedClasses = [];
 
-    useEffect(() => {
-        scrollSelectorToLevel("right", selectedClasses.length + 1);
-    }, [selectedClasses]);
+    const [selectedClasses, setSelectedClasses] = useState(initialSelectedClasses);
+    const [hoveredClass, setHoveredClass] = useState(null);
+    const selectorRef = useRef(null);
+    const previousSelectedClasses = usePrevious(selectedClasses, initialSelectedClasses);
+    const selectorCSSClass = "class-selector";
+
+    useEffect(scrollRightIfNeeded, [selectedClasses]);
+
+    function scrollRightIfNeeded() {
+        const selectedClassesGrew = selectedClasses.length > previousSelectedClasses.length;
+        
+        if (selectedClassesGrew) {
+            const hoverPreviewLevel = selectedClasses.length + 2;
+            scrollSelectorToLevel(hoverPreviewLevel);
+        }
+    }
     
-    function scrollSelectorToLevel(direction, selectedLevel) {
-        const [minLevel, maxLevel] = [1, selectedClasses.length + 1];
+    function scrollSelectorToLevel(scrollLevel) {
+        const scrollElementIndex = 2 * (scrollLevel - 1);
+        const scrollElement = selectorRef.current.children[scrollElementIndex];
         
-        const focusedLevelOffset = direction === "left" ? -1 : 1;
-        const focusedLevel = Math.max(Math.min(minLevel, selectedLevel + focusedLevelOffset), maxLevel);
-        const focusedElementIndex = 2 * (focusedLevel - 1);
-        const focusedElement = selectorRef.current.children[focusedElementIndex];
-        
-        focusedElement.scrollIntoView();
+        scrollElement.scrollIntoView();
     }
 
-    function updateSelectedClasses(selectedClass, classLevel) {
-        let newSelectedClasses = selectedClasses.slice(0, classLevel - 1);
+    function updateSelectedClasses(selectedClass, selectedClassLevel) {
+        let newSelectedClasses = selectedClasses.slice(0, selectedClassLevel - 1);
         newSelectedClasses.push(selectedClass);
-        scrollSelectorToLevel("left", classLevel);
-        setSelectedClasses(newSelectedClasses);
+        
+        const scrollDirection = newSelectedClasses.length < selectedClasses.length ? ScrollDirection.LEFT : ScrollDirection.RIGHT;
+
+        if (scrollDirection === ScrollDirection.LEFT) {
+            const previousLevel = Math.max(1, selectedClassLevel - 1);
+            scrollSelectorToLevel(previousLevel);
+
+            selectorRef.current.addEventListener("scrollend", () => {
+                setSelectedClasses(newSelectedClasses);
+            }, {once: true});
+        
+        } else {
+            setSelectedClasses(newSelectedClasses);
+        }
     }
 
     return (
@@ -72,6 +95,10 @@ function SelectorElements() {
     const showFillerColumn = selectedClasses.length === 0;
 
     return (
+        //       # selected * <Previous Col>,  <Divider>
+        //                1 * <Selection Col>, <Divider>
+        //                1 * <Preview Col>
+        // showFillerColumn * <Divider>,       <Filler Col>
         <>
             {selectedClasses.map((_selectedClass, selectedClassIndex) => {
                 levelNum++;
