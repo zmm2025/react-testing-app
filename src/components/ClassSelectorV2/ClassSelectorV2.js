@@ -78,6 +78,7 @@ export default function ClassSelectorV2() {
             const previousLevel = Math.max(1, selectedClassLevel - 1);
             scrollSelectorToLevel(previousLevel);
 
+            // "scrollend" compatibility: https://caniuse.com/mdn-api_element_scrollend_event
             selectorRef.current.addEventListener("scrollend", () => {
                 setSelectedClasses(newSelectedClasses);
             }, {once: true});
