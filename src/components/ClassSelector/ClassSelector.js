@@ -49,11 +49,11 @@ export default function ClassSelector() {
             const selectedClassHasChildren = Object.keys(levelClasses).length > 0;
 
             const rightmostLevel = selectedClasses.length + 1 + selectedClassHasChildren;
-            scrollSelectorToLevel(rightmostLevel);
+            scrollLevelIntoView(rightmostLevel);
         }
     }
     
-    function scrollSelectorToLevel(scrollLevel) {
+    function scrollLevelIntoView(scrollLevel) {
         const scrollElementIndex = 2 * (scrollLevel - 1);
         const scrollElement = selectorRef.current.children[scrollElementIndex];
         
@@ -68,7 +68,7 @@ export default function ClassSelector() {
 
         if (selectedClassesShrunk) {
             const previousLevel = Math.max(1, selectedClassLevel);
-            scrollSelectorToLevel(previousLevel);
+            scrollLevelIntoView(previousLevel);
             
             // "scrollend" compatibility: https://caniuse.com/mdn-api_element_scrollend_event
             selectorRef.current.addEventListener("scrollend", () => {
