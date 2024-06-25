@@ -3,11 +3,23 @@ import level1Classes from "../../data/classes.json";
 import { ReactComponent as RightChevron } from "../../images/chevron_right.svg";
 import "./ClassSelectorV2.css";
 
+const ColumnTypes = Object.freeze({
+    PREVIOUS:  "previous",
+    SELECTION: "selection",
+    PREVIEW:   "preview",
+    FILLER:    "filler"
+});
+
 const SelectorContext = createContext({
     selectedClasses: [],
     updateSelectedClasses: () => {},
     hoveredClass: null,
     setHoveredClass: () => {}
+});    
+
+const ColumnContext = createContext({
+    levelNum: 1,
+    type: ColumnTypes.SELECTION
 });
 
 export default function ClassSelectorV2() {
@@ -76,7 +88,7 @@ function SelectorElements() {
             {showHoverColumn ? (
                 <>
                     <Divider orientation={dividerOrientation} />
-                    <Column levelNum={++levelNum} type={"hover"} />
+                    <Column levelNum={++levelNum} type={ColumnTypes.PREVIEW} />
                 </>
             ) : (
                 null
@@ -84,7 +96,7 @@ function SelectorElements() {
             {showFillerColumn ? (
                 <>
                     <Divider orientation={dividerOrientation} />
-                    <Column type={"filler"}/>
+                    <Column type={ColumnTypes.FILLER}/>
                 </>
             ) : (
                 null
@@ -93,12 +105,7 @@ function SelectorElements() {
     )
 }
 
-const ColumnContext = createContext({
-    levelNum: 1,
-    type: "normal"
-});
-
-function Column({ levelNum = null, type = "normal" }) {
+function Column({ levelNum = null, type = ColumnTypes.SELECTION }) {
     const columnCSSClass = `column ${type}`;
     
     return (
@@ -123,7 +130,7 @@ function Divider({ orientation }) {
 function HeaderCell() {
     const {levelNum, type} = useContext(ColumnContext);
     const cellCSSClass = `header-cell ${type}`;
-    const showText = type !== "filler";
+    const showText = type !== ColumnTypes.FILLER;
     
     return (
         <div className={cellCSSClass}>
@@ -146,7 +153,7 @@ function ColumnBody() {
     function getLevelClassEntries(type) {
         let levelClasses = {};
         
-        if ((type === "filler") || (type === "hover" && hoveredClass === null)) {
+        if ((type === ColumnTypes.FILLER) || (type === ColumnTypes.PREVIEW && hoveredClass === null)) {
             return Object.entries(levelClasses);
         }
         
@@ -155,11 +162,12 @@ function ColumnBody() {
             const selectedLevelClass = selectedClasses[levelIndex - 1];
             levelClasses = levelClasses[selectedLevelClass];
         }
-        if (type === "hover") {
+        if (type === ColumnTypes.PREVIEW) {
             levelClasses = levelClasses[hoveredClass];
         }
-        console.log(`Math.min(selectedClasses.length + 1, levelNum): ${Math.min(selectedClasses.length + 1, levelNum)}`); // TEMP
-        console.log(`Level ${levelNum} (${type}) levelClasses:`, levelClasses); // TEMP
+        // console.log(`Math.min(selectedClasses.length + 1, levelNum): ${Math.min(selectedClasses.length + 1, levelNum)}`); // TEMP
+        // console.log(`Level ${levelNum} (${type}) levelClasses:`, levelClasses); // TEMP
+
         return Object.entries(levelClasses);
     }
 
@@ -186,13 +194,13 @@ function Cell({ cellClass }) {
     const chevronCSSClass = `chevron ${type}`;
 
     function handleMouseOver() {
-        if (type === "normal") {
+        if (type === ColumnTypes.SELECTION) {
             setHoveredClass(cellClassName);
         }
     }
 
     function handleMouseOut() {
-        if (type === "normal") {
+        if (type === ColumnTypes.SELECTION) {
             setHoveredClass(null);
         }
     }
