@@ -32,6 +32,7 @@ export default function ClassSelector() {
     const previousSelectedClasses = usePrevious(selectedClasses, initialSelectedClasses);
     const selectorCSSClass = "class-selector";
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(scrollRightIfNeeded, [selectedClasses]);
 
     function scrollRightIfNeeded() {
