@@ -11,11 +11,6 @@ const ColumnTypes = Object.freeze({
     FILLER:        "filler"
 });
 
-const ScrollDirection = Object.freeze({
-    LEFT:  "left",
-    RIGHT: "right"
-})
-
 const SelectorContext = createContext({
     selectedClasses: [],
     updateSelectedClasses: () => {},
@@ -44,7 +39,6 @@ export default function ClassSelector() {
         
         if (selectedClassesGrew) {
             const selectedClassLevel = selectedClasses.length;
-            const selectedClass = selectedClasses[selectedClassLevel - 1];
             
             let levelClasses = level1Classes;
             for (let level = 1; level <= selectedClassLevel; level++) {                
