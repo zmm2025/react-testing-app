@@ -108,11 +108,21 @@ div.cell {
         /* Text */
         text-overflow: ellipsis;
         white-space: nowrap;
+
+        &.hover-preview {
+            /* Appearance */
+            color: var(--neutral-400, #919191);
+        }
     }
 
     svg.chevron {
         /* Layout */
         display: block;
         margin-right: 12px;
+
+        &.hover-preview {
+            /* Appearance */
+            fill: rgba(0, 0, 0, 0.216);
+        }
     }
 }
