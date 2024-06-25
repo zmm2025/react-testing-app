@@ -1,6 +1,5 @@
 import { Fragment, createContext, useContext, useEffect, useRef, useState } from "react";
 import level1Classes from "../../data/classes.json";
-import { usePrevious } from "../../hooks/usePrevious.js";
 import { ReactComponent as RightChevron } from "../../images/chevron_right.svg";
 import "./ClassSelector.css";
 
@@ -13,7 +12,7 @@ const ColumnTypes = Object.freeze({
 
 const SelectorContext = createContext({
     selectedClasses: [],
-    updateSelectedClasses: () => {},
+    selectClass: () => {},
     hoveredClass: null,
     setHoveredClass: () => {}
 });    
@@ -29,61 +28,51 @@ export default function ClassSelector() {
     const [selectedClasses, setSelectedClasses] = useState(initialSelectedClasses);
     const [hoveredClass, setHoveredClass] = useState(null);
     const selectorRef = useRef(null);
-    const previousSelectedClasses = usePrevious(selectedClasses, initialSelectedClasses);
+    const selectedClassRef = useRef(["", {}]);
     const selectorCSSClass = "class-selector";
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    useEffect(scrollRightIfNeeded, [selectedClasses]);
+    useEffect(scrollRightIfChildren, [selectedClasses]);
 
-    function scrollRightIfNeeded() {
-        const selectedClassesGrew = selectedClasses.length > previousSelectedClasses.length;
-        
-        if (selectedClassesGrew) {
-            const selectedClassLevel = selectedClasses.length;
-            
-            let levelClasses = level1Classes;
-            for (let level = 1; level <= selectedClassLevel; level++) {                
-                const selectedLevelClass = selectedClasses[level - 1];
-                levelClasses = levelClasses[selectedLevelClass];
-            }
-            const selectedClassHasChildren = Object.keys(levelClasses).length > 0;
+    function scrollRightIfChildren() {
+        const [, selectedClassChildren] = selectedClassRef.current;
+        const hasChildren = Object.keys(selectedClassChildren).length > 0;
 
-            const rightmostLevel = selectedClasses.length + 1 + selectedClassHasChildren;
-            scrollLevelIntoView(rightmostLevel);
+        if (hasChildren) {
+            const centerLevel = selectedClasses.length + 1;
+            centerLevelInView(centerLevel);
         }
     }
-    
-    function scrollLevelIntoView(scrollLevel) {
-        const scrollElementIndex = 2 * (scrollLevel - 1);
-        const scrollElement = selectorRef.current.children[scrollElementIndex];
+
+    function centerLevelInView(level) {
+        const centerElementIndex = 2 * (level - 1);
+
+        const leftElementIndex  = centerElementIndex - 2;
+        const rightElementIndex = centerElementIndex + 2;
         
-        scrollElement.scrollIntoView();
+        const leftElement  = selectorRef.current.children[leftElementIndex];
+        const rightElement = selectorRef.current.children[rightElementIndex];
+
+        leftElement.scrollIntoView();
+        rightElement.scrollIntoView();
     }
 
-    function updateSelectedClasses(selectedClass, selectedClassLevel) {
-        let newSelectedClasses = selectedClasses.slice(0, selectedClassLevel - 1);
-        newSelectedClasses.push(selectedClass);
-
-        const selectedClassesShrunk = newSelectedClasses.length < selectedClasses.length;
-
-        if (selectedClassesShrunk) {
-            const previousLevel = Math.max(1, selectedClassLevel);
-            scrollLevelIntoView(previousLevel);
-            
-            // "scrollend" compatibility: https://caniuse.com/mdn-api_element_scrollend_event
-            selectorRef.current.addEventListener("scrollend", () => {
-                setSelectedClasses(newSelectedClasses);
-            }, {once: true});
+    function selectClass(selectedClass, level) {
+        selectedClassRef.current = selectedClass;
+        const [className, classChildren] = selectedClass;
+        const hasChildren = Object.keys(classChildren).length > 0;
         
-        } else {
-            setSelectedClasses(newSelectedClasses);
-        }
+        const centerLevel = Math.max(2, level) + hasChildren;
+        centerLevelInView(centerLevel);
+
+        let newSelectedClasses = selectedClasses.slice(0, level - 1);
+        newSelectedClasses.push(className);
+        setSelectedClasses(newSelectedClasses);
     }
 
     return (
         <SelectorContext.Provider value={{
             selectedClasses: selectedClasses,
-            updateSelectedClasses: updateSelectedClasses,
+            selectClass: selectClass,
             hoveredClass: hoveredClass,
             setHoveredClass: setHoveredClass
         }}>
@@ -98,13 +87,8 @@ function SelectorElements() {
     const {selectedClasses} = useContext(SelectorContext);
     let levelNum = 0;
     const dividerOrientation = "vertical";
-    const showFillerColumn = selectedClasses.length === 0;
 
     return (
-        //       # selected * <Previous Col>,  <Divider>
-        //                1 * <Selection Col>, <Divider>
-        //                1 * <Preview Col>
-        // showFillerColumn * <Divider>,       <Filler Col>
         <>
             {selectedClasses.map((_selectedClass, selectedClassIndex) => {
                 levelNum++;
@@ -115,17 +99,12 @@ function SelectorElements() {
                     </Fragment>
                 )
             })}
+
             <Column type={ColumnTypes.SELECTION} levelNum={++levelNum} />
             <Divider orientation={dividerOrientation} />
             <Column type={ColumnTypes.HOVER_PREVIEW} levelNum={++levelNum} />
-            {showFillerColumn ? (
-                <>
-                    <Divider orientation={dividerOrientation} />
-                    <Column type={ColumnTypes.FILLER} levelNum={null} />
-                </>
-            ) : (
-                null
-            )}
+            <Divider orientation={dividerOrientation} />
+            <Column type={ColumnTypes.FILLER} levelNum={null} />
         </>
     )
 }
@@ -204,7 +183,7 @@ function ColumnBody() {
 }
 
 function Cell({ cellClass }) {
-    const {selectedClasses, updateSelectedClasses, setHoveredClass} = useContext(SelectorContext);
+    const {selectedClasses, selectClass, setHoveredClass} = useContext(SelectorContext);
     const {levelNum, type} = useContext(ColumnContext);
 
     const [cellClassName, children] = cellClass;
@@ -228,7 +207,7 @@ function Cell({ cellClass }) {
 
     function handleClick() {
         setHoveredClass(null);
-        updateSelectedClasses(cellClassName, levelNum);
+        selectClass(cellClass, levelNum);
     }
 
     return (
