@@ -4,10 +4,10 @@ import { ReactComponent as RightChevron } from "../../images/chevron_right.svg";
 import "./ClassSelectorV2.css";
 
 const ColumnTypes = Object.freeze({
-    PREVIOUS:  "previous",
-    SELECTION: "selection",
-    PREVIEW:   "preview",
-    FILLER:    "filler"
+    PREVIOUS:      "previous",
+    SELECTION:     "selection",
+    HOVER_PREVIEW: "hover-preview",
+    FILLER:        "filler"
 });
 
 const SelectorContext = createContext({
@@ -45,7 +45,6 @@ export default function ClassSelectorV2() {
     }
 
     function updateSelectedClasses(selectedClass, classLevel) {
-        // console.log(`Called updateSelectedClasses("${selectedClass}", ${classLevel})`); // TEMP
         let newSelectedClasses = selectedClasses.slice(0, classLevel - 1);
         newSelectedClasses.push(selectedClass);
         scrollSelectorToLevel("left", classLevel);
@@ -68,35 +67,28 @@ export default function ClassSelectorV2() {
 
 function SelectorElements() {
     const {selectedClasses} = useContext(SelectorContext);
-    let levelNum = 1;
+    let levelNum = 0;
     const dividerOrientation = "vertical";
-    const showHoverColumn = true; // TODO: Generalize this
     const showFillerColumn = selectedClasses.length === 0;
-    
+
     return (
         <>
-            <Column levelNum={levelNum} />
             {selectedClasses.map((_selectedClass, selectedClassIndex) => {
                 levelNum++;
                 return (
                     <Fragment key={selectedClassIndex}>
+                        <Column type={ColumnTypes.PREVIOUS} levelNum={levelNum} />
                         <Divider orientation={dividerOrientation} />
-                        <Column key={levelNum} levelNum={levelNum} />
                     </Fragment>
                 )
             })}
-            {showHoverColumn ? (
-                <>
-                    <Divider orientation={dividerOrientation} />
-                    <Column levelNum={++levelNum} type={ColumnTypes.PREVIEW} />
-                </>
-            ) : (
-                null
-            )}
+            <Column type={ColumnTypes.SELECTION} levelNum={++levelNum} />
+            <Divider orientation={dividerOrientation} />
+            <Column type={ColumnTypes.HOVER_PREVIEW} levelNum={++levelNum} />
             {showFillerColumn ? (
                 <>
                     <Divider orientation={dividerOrientation} />
-                    <Column type={ColumnTypes.FILLER}/>
+                    <Column type={ColumnTypes.FILLER} levelNum={null} />
                 </>
             ) : (
                 null
@@ -105,7 +97,7 @@ function SelectorElements() {
     )
 }
 
-function Column({ levelNum = null, type = ColumnTypes.SELECTION }) {
+function Column({ type, levelNum = null }) {
     const columnCSSClass = `column ${type}`;
     
     return (
@@ -153,7 +145,7 @@ function ColumnBody() {
     function getLevelClassEntries(type) {
         let levelClasses = {};
         
-        if ((type === ColumnTypes.FILLER) || (type === ColumnTypes.PREVIEW && hoveredClass === null)) {
+        if ((type === ColumnTypes.FILLER) || (type === ColumnTypes.HOVER_PREVIEW && hoveredClass === null)) {
             return Object.entries(levelClasses);
         }
         
@@ -162,11 +154,9 @@ function ColumnBody() {
             const selectedLevelClass = selectedClasses[levelIndex - 1];
             levelClasses = levelClasses[selectedLevelClass];
         }
-        if (type === ColumnTypes.PREVIEW) {
+        if (type === ColumnTypes.HOVER_PREVIEW) {
             levelClasses = levelClasses[hoveredClass];
         }
-        // console.log(`Math.min(selectedClasses.length + 1, levelNum): ${Math.min(selectedClasses.length + 1, levelNum)}`); // TEMP
-        // console.log(`Level ${levelNum} (${type}) levelClasses:`, levelClasses); // TEMP
 
         return Object.entries(levelClasses);
     }
