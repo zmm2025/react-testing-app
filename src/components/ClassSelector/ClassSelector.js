@@ -176,13 +176,11 @@ function ColumnBody() {
     const levelClassEntries = getLevelClassEntries(type)
     
     function getLevelClassEntries(type) {
-        let levelClasses = {};
-        
         if ((type === ColumnTypes.FILLER) || (type === ColumnTypes.HOVER_PREVIEW && hoveredClass === null)) {
-            return Object.entries(levelClasses);
+            return [];
         }
         
-        levelClasses = level1Classes;
+        let levelClasses = level1Classes;
         for (let levelIndex = 1; levelIndex < Math.min(selectedClasses.length + 1, levelNum); levelIndex++) {
             const selectedLevelClass = selectedClasses[levelIndex - 1];
             levelClasses = levelClasses[selectedLevelClass];
