@@ -60,8 +60,9 @@ export default function ClassSelector() {
         selectedClassRef.current = selectedClass;
         const [className, classChildren] = selectedClass;
         const hasChildren = Object.keys(classChildren).length > 0;
+        const isFirstLevel = level === 1;
         
-        const centerLevel = Math.max(2, level) + hasChildren;
+        const centerLevel = Math.max(2, level) + hasChildren - isFirstLevel;
         centerLevelInView(centerLevel);
 
         let newSelectedClasses = selectedClasses.slice(0, level - 1);
