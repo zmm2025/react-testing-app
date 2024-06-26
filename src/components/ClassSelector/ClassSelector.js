@@ -4,7 +4,7 @@ import { ReactComponent as RightChevron } from "../../images/chevron_right.svg";
 import "./ClassSelector.css";
 
 const ColumnTypes = Object.freeze({
-    PREVIOUS:  "previous",
+    SELECTED:  "selected",
     SELECTION: "selection",
     PREVIEW:   "preview",
     FILLER:    "filler"
@@ -95,7 +95,7 @@ function SelectorElements() {
             {selectedClassNames.map((_className, classIndex) => {
                 return (
                     <Fragment key={classIndex}>
-                        <Column type={ColumnTypes.PREVIOUS} level={++level} />
+                        <Column type={ColumnTypes.SELECTED} level={++level} />
                         <Divider orientation={dividerOrientation} />
                     </Fragment>
                 )
