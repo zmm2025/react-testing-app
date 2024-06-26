@@ -93,10 +93,9 @@ function SelectorElements() {
     return (
         <>
             {selectedClassNames.map((_className, classIndex) => {
-                level++;
                 return (
                     <Fragment key={classIndex}>
-                        <Column type={ColumnTypes.PREVIOUS} level={level} />
+                        <Column type={ColumnTypes.PREVIOUS} level={++level} />
                         <Divider orientation={dividerOrientation} />
                     </Fragment>
                 )
