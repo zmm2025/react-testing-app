@@ -20,7 +20,7 @@ div.column {
     max-width: calc((100% - 1px - 1px) / 3);
     min-width: calc((100% - 1px - 1px) / 3);
 
-    &.filler {
+    &.col-filler {
         /* Layout */
         flex-grow: 1;
         max-width: none;
@@ -70,7 +70,7 @@ div.cell {
     cursor: pointer;
 
     
-    &.selected {
+    &.cell-selected {
         /* Appearance */
         background-color: var(--blue-500, #5596E6);
     
@@ -85,7 +85,7 @@ div.cell {
         }
     }
 
-    &.unselected {
+    &.cell-unselected {
         &:hover {
             /* Appearance */
             background-color: var(--neutral-100, #e2e2e2);
@@ -109,7 +109,7 @@ div.cell {
         text-overflow: ellipsis;
         white-space: nowrap;
 
-        &.preview {
+        &.col-preview {
             /* Appearance */
             color: var(--neutral-400, #919191);
         }
@@ -120,7 +120,7 @@ div.cell {
         display: block;
         margin-right: 12px;
 
-        &.preview {
+        &.col-preview {
             /* Appearance */
             fill: rgba(0, 0, 0, 0.216);
         }

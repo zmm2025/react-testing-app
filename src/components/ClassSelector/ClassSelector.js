@@ -1,5 +1,5 @@
 import { Fragment, createContext, useContext, useEffect, useRef, useState } from "react";
-import level1Classes from "../../data/classes.json";
+import column1Classes from "../../data/classes.json";
 import { ReactComponent as RightChevron } from "../../images/chevron_right.svg";
 import "./ClassSelector.css";
 
@@ -16,12 +16,13 @@ const SelectorContext = createContext({
     selectClass: () => {},
     hoveredClassName: null,
     setHoveredClassName: () => {}
-});    
+});
 
 const ColumnContext = createContext({
     classEntries: [],
     level: 1,
-    type: ColumnTypes.SELECTION
+    type: ColumnTypes.SELECTION,
+    isHoverable: null
 });
 
 export default function ClassSelector() {
@@ -61,7 +62,7 @@ export default function ClassSelector() {
         const {name: className, children: classChildren} = classData;
         const isAtFirstLevel = level === 1;
         const hasChildren = Object.keys(classChildren).length > 0;
-        
+
         const centerLevel = level + (isAtFirstLevel || hasChildren);
         centerLevelInView(centerLevel);
 
@@ -82,13 +83,17 @@ export default function ClassSelector() {
                 <SelectorElements />
             </div>
         </SelectorContext.Provider>
-    )
+    );
 }
 
 function SelectorElements() {
-    const {selectedClassNames} = useContext(SelectorContext);
+    const {selectedClassNames, selectedClassDataRef} = useContext(SelectorContext);
+    const {children: selectedClassChildren} = selectedClassDataRef.current;
+
     let level = 0;
     const dividerOrientation = "vertical";
+    const noClassesSelected = selectedClassNames.length === 0;
+    const selectedColumnHasChildren = Object.keys(selectedClassChildren).length > 0;
 
     return (
         <>
@@ -98,113 +103,134 @@ function SelectorElements() {
                         <Column type={ColumnTypes.SELECTED} level={++level} />
                         <Divider orientation={dividerOrientation} />
                     </Fragment>
-                )
+                );
             })}
 
-            <Column type={ColumnTypes.SELECTION} level={++level} />
-            <Divider orientation={dividerOrientation} />
+            {(noClassesSelected || selectedColumnHasChildren) && <>
+                <Column type={ColumnTypes.SELECTION} level={++level} />
+                <Divider orientation={dividerOrientation} />
+            </>}
             <Column type={ColumnTypes.PREVIEW} level={++level} />
             <Divider orientation={dividerOrientation} />
             <Column type={ColumnTypes.FILLER} level={null} />
         </>
-    )
+    );
 }
 
 function Column({ type, level: columnLevel = null }) {
-    const {selectedClassNames, hoveredClassName} = useContext(SelectorContext);
+    const {selectedClassNames, selectedClassDataRef, hoveredClassName} = useContext(SelectorContext);
+    const {children: selectedClassChildren} = selectedClassDataRef.current;
+    
+    const selectedClassIsChildless = Object.keys(selectedClassChildren).length === 0;
+    
     const classEntries = getColumnClassEntries();
-    const columnCSSClass = `column ${type}`;
+    const isHoverable = getColumnHoverability();
+    const columnCSSClass = `column col-${type}`;
     
     function getColumnClassEntries() {
-        const isFillerColumn = type === ColumnTypes.FILLER;
         const isEmptyPreviewColumn = (type === ColumnTypes.PREVIEW) && (hoveredClassName === null);
-        
-        if (isFillerColumn || isEmptyPreviewColumn) {
+        const isFillerColumn = type === ColumnTypes.FILLER;
+
+        if (isEmptyPreviewColumn || isFillerColumn) {
             return [];
         }
 
-        let levelClasses = level1Classes;
-        for (let level = 1; level < Math.min(selectedClassNames.length + 1, columnLevel); level++) {
-            const levelSelectedClassName = selectedClassNames[level - 1];
-            levelClasses = levelClasses[levelSelectedClassName];
+        const isPreviewColumnForSelectedLevel = (type === ColumnTypes.PREVIEW) && selectedClassIsChildless;
+        let columnClasses = column1Classes;
+        for (let level = 1; level <= Math.min(columnLevel - 1, selectedClassNames.length - isPreviewColumnForSelectedLevel); level++) {
+            const selectedClassNameAtLevel = selectedClassNames[level - 1];
+            columnClasses = columnClasses[selectedClassNameAtLevel];
         }
         if (type === ColumnTypes.PREVIEW) {
-            levelClasses = levelClasses[hoveredClassName];
+            const previewClasses = columnClasses[hoveredClassName];
+            columnClasses = previewClasses !== undefined ? previewClasses : {};
         }
 
-        return Object.entries(levelClasses);
+        const columnClassEntries = Object.entries(columnClasses);
+        return columnClassEntries;
+    }
+
+    function getColumnHoverability() {
+        const isSelectedColumn = type === ColumnTypes.SELECTED;
+        const isSelectionColumn = type === ColumnTypes.SELECTION;
+        const isChildlessSelectedColumn = isSelectedColumn && selectedClassIsChildless;
+        const isHoverable = isChildlessSelectedColumn || isSelectionColumn;
+
+        return isHoverable;
     }
 
     return (
-        <ColumnContext.Provider value={{classEntries: classEntries, level: columnLevel, type: type}}>
+        <ColumnContext.Provider value={{
+            classEntries: classEntries,
+            level: columnLevel,
+            type: type,
+            isHoverable: isHoverable
+        }}>
             <div className={columnCSSClass}>
                 <HeaderCell />
                 <Divider orientation={"horizontal"} />
                 <ColumnBody />
             </div>
         </ColumnContext.Provider>
-    )
+    );
 }
 
 function Divider({ orientation }) {
     const dividerCSSClass = `divider ${orientation}`;
-    
+
     return (
         <div className={dividerCSSClass} />
-    )
+    );
 }
 
 function HeaderCell() {
     const {level, type} = useContext(ColumnContext);
-    const cellCSSClass = `header-cell ${type}`;
+    const cellCSSClass = `header-cell col-${type}`;
     const showText = type !== ColumnTypes.FILLER;
-    
+
     return (
         <div className={cellCSSClass}>
-            {showText ? (
-                <p>{`Level ${level}`}</p>
-            ) : (
-                null
-            )}
+            {showText && <p>{`Level ${level}`}</p>}
         </div>
-    )
+    );
 }
 
 function ColumnBody() {
     const {classEntries, type} = useContext(ColumnContext);
-    const bodyCSSClass = `column-body ${type}`;
+    const bodyCSSClass = `column-body col-${type}`;
 
     return (
         <div className={bodyCSSClass}>
             {classEntries.map((classEntry, classEntryIndex) => {
                 return (
                     <Cell key={classEntryIndex} classEntry={classEntry} />
-                )
+                );
             })}
         </div>
-    )
+    );
 }
 
 function Cell({ classEntry }) {
     const {selectedClassNames, selectClass, setHoveredClassName} = useContext(SelectorContext);
-    const {level, type} = useContext(ColumnContext);
+    const {level, type: columnType, isHoverable: columnIsHoverable} = useContext(ColumnContext);
 
     const [name, children] = classEntry;
-    const hasChildren = Object.keys(children).length > 0;
 
     const isSelected = selectedClassNames.includes(name);
-    const cellCSSClass = `cell ${type} ${isSelected ? "selected" : "unselected"}`;
-    const textCSSClass = `cell-text ${type}`;
-    const chevronCSSClass = `chevron ${type}`;
+    const cellCSSClass = `cell col-${columnType} cell-${isSelected ? "selected" : "unselected"}`;
+    const textCSSClass = `cell-text col-${columnType}`;
+    const chevronCSSClass = `chevron col-${columnType}`;
+
+    const hasChildren = Object.keys(children).length > 0;
 
     function handleMouseOver() {
-        if (type === ColumnTypes.SELECTION) {
+        if (columnIsHoverable) {
             setHoveredClassName(name);
         }
     }
 
     function handleMouseOut() {
-        if (type === ColumnTypes.SELECTION) {
+        if (columnIsHoverable) {
             setHoveredClassName(null);
         }
     }
@@ -220,5 +246,5 @@ function Cell({ classEntry }) {
             <p className={textCSSClass}>{name}</p>
             {hasChildren && <RightChevron className={chevronCSSClass} />}
         </div>
-    )
+    );
 }
