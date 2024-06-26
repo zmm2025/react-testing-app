@@ -109,7 +109,7 @@ div.cell {
         text-overflow: ellipsis;
         white-space: nowrap;
 
-        &.hover-preview {
+        &.preview {
             /* Appearance */
             color: var(--neutral-400, #919191);
         }
@@ -120,7 +120,7 @@ div.cell {
         display: block;
         margin-right: 12px;
 
-        &.hover-preview {
+        &.preview {
             /* Appearance */
             fill: rgba(0, 0, 0, 0.216);
         }
