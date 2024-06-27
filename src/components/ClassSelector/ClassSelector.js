@@ -28,7 +28,7 @@ const ColumnContext = createContext({
 export default function ClassSelector() {
     const [selectedClassNames, setSelectedClassNames] = useState([]);
     const [selectedClassData, setSelectedClassData] = useState({name: null, children: {}});
-    const [hoveredClassname, setHoveredClassName] = useState(null);
+    const [hoveredClassName, setHoveredClassName] = useState(null);
     const selectorRef = useRef(null);
     const selectorCSSClass = "class-selector";
 
@@ -76,7 +76,7 @@ export default function ClassSelector() {
             selectedClassNames: selectedClassNames,
             selectedClassData: selectedClassData,
             selectClass: selectClass,
-            hoveredClassName: hoveredClassname,
+            hoveredClassName: hoveredClassName,
             setHoveredClassName: setHoveredClassName,
         }}>
             <div ref={selectorRef} className={selectorCSSClass}>
