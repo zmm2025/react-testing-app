@@ -66,9 +66,9 @@ export default function ClassSelector() {
         const centerLevel = level + (isAtFirstLevel || hasChildren);
         centerLevelInView(centerLevel);
 
-        let newSelectedClasses = selectedClassNames.slice(0, level - 1);
-        newSelectedClasses.push(className);
-        setSelectedClassNames(newSelectedClasses);
+        let newSelectedClassNames = selectedClassNames.slice(0, level - 1);
+        newSelectedClassNames.push(className);
+        setSelectedClassNames(newSelectedClassNames);
     }
 
     return (
