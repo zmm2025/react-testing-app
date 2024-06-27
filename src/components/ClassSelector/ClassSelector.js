@@ -12,7 +12,7 @@ const ColumnTypes = Object.freeze({
 
 const SelectorContext = createContext({
     selectedClassNames: [],
-    selectedClassDataRef: null,
+    selectedClassData: {name: null, children: {}},
     selectClass: () => {},
     hoveredClassName: null,
     setHoveredClassName: () => {}
@@ -27,15 +27,15 @@ const ColumnContext = createContext({
 
 export default function ClassSelector() {
     const [selectedClassNames, setSelectedClassNames] = useState([]);
+    const [selectedClassData, setSelectedClassData] = useState({name: null, children: {}});
     const [hoveredClassname, setHoveredClassName] = useState(null);
     const selectorRef = useRef(null);
-    const selectedClassDataRef = useRef({name: null, children: {}});
     const selectorCSSClass = "class-selector";
 
-    useEffect(scrollRightIfChildren, [selectedClassNames]);
+    useEffect(scrollRightIfChildren, [selectedClassNames, selectedClassData]);
 
     function scrollRightIfChildren() {
-        const {children: selectedClassChildren} = selectedClassDataRef.current;
+        const {children: selectedClassChildren} = selectedClassData;
         const selectedClassHasChildren = Object.keys(selectedClassChildren).length > 0;
 
         if (selectedClassHasChildren) {
@@ -58,7 +58,7 @@ export default function ClassSelector() {
     }
 
     function selectClass(classData, level) {
-        selectedClassDataRef.current = classData;
+        setSelectedClassData(classData);
         const {name: className, children: classChildren} = classData;
         const isAtFirstLevel = level === 1;
         const hasChildren = Object.keys(classChildren).length > 0;
@@ -74,10 +74,10 @@ export default function ClassSelector() {
     return (
         <SelectorContext.Provider value={{
             selectedClassNames: selectedClassNames,
+            selectedClassData: selectedClassData,
             selectClass: selectClass,
             hoveredClassName: hoveredClassname,
             setHoveredClassName: setHoveredClassName,
-            selectedClassDataRef: selectedClassDataRef
         }}>
             <div ref={selectorRef} className={selectorCSSClass}>
                 <SelectorElements />
@@ -87,8 +87,8 @@ export default function ClassSelector() {
 }
 
 function SelectorElements() {
-    const {selectedClassNames, selectedClassDataRef} = useContext(SelectorContext);
-    const {children: selectedClassChildren} = selectedClassDataRef.current;
+    const {selectedClassNames, selectedClassData} = useContext(SelectorContext);
+    const {children: selectedClassChildren} = selectedClassData;
 
     let level = 0;
     const dividerOrientation = "vertical";
@@ -118,8 +118,8 @@ function SelectorElements() {
 }
 
 function Column({ type, level: columnLevel = null }) {
-    const {selectedClassNames, selectedClassDataRef, hoveredClassName} = useContext(SelectorContext);
-    const {children: selectedClassChildren} = selectedClassDataRef.current;
+    const {selectedClassNames, selectedClassData, hoveredClassName} = useContext(SelectorContext);
+    const {children: selectedClassChildren} = selectedClassData;
     
     const selectedClassIsChildless = Object.keys(selectedClassChildren).length === 0;
     
