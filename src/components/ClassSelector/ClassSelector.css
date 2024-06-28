@@ -20,7 +20,7 @@ div.column {
     max-width: calc((100% - 1px - 1px) / 3);
     min-width: calc((100% - 1px - 1px) / 3);
 
-    &.col-filler {
+    &.empty {
         /* Layout */
         flex-grow: 1;
         max-width: none;
