@@ -83,7 +83,6 @@ export default function ClassSelector() {
 
         newColumnsData.push(emptyColumnData);
         newColumnsData.push(emptyColumnData);
-        // TODO: add/remove another?
 
         const isAtFirstLevel = classLevel === 1;
         const levelToCenter = classLevel + isAtFirstLevel;
@@ -252,7 +251,7 @@ function Cell({ cellClass }) {
 
     function handleClick() {
         if (columnData.selectedClassID === cellClass.id) {
-            deselectClass(level)
+            deselectClass(level);
         } else {
             selectClass(cellClass.id, level);
         }
