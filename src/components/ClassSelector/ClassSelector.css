@@ -60,15 +60,22 @@ div.column-body {
     width: 100%;
 }
 
-div.cell {
+button.cell {
     /* Layout */
     align-items: center;
     display: flex;
     height: 40px;
+    padding: 0px;
+    width: 100%;
+    
+    /* Text */
+    font: inherit;
+    text-align: start;
 
     /* Appearance */
+    background: none;
+    border: none;
     cursor: pointer;
-
     
     &.cell-selected {
         /* Appearance */
@@ -117,7 +124,6 @@ div.cell {
 
     svg.chevron {
         /* Layout */
-        display: block;
         margin-right: 12px;
 
         &.col-preview {
