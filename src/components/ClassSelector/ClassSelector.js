@@ -36,7 +36,7 @@ export default function ClassSelector() {
     const [columnsData, setColumnsData] = useState(initialColumnsData);
     const selectorRef = useRef(null);
     const selectorCSSClass = "class-selector";
-    
+
     function centerLevelInView(level) {
         const centerElementIndex = 2 * (level - 1);
 
@@ -71,7 +71,7 @@ export default function ClassSelector() {
         centerLevelInView(levelToCenter);
 
         setColumnsData(newColumnsData);
-    }    
+    }
 
     function hoverClass(classID, level) {
         let newColumnsData = JSON.parse(JSON.stringify(columnsData)); // deep copy
@@ -83,7 +83,7 @@ export default function ClassSelector() {
         newColumnsData[level].classes = (hoveredClassIndex === -1) ? [] : hoveredColumnData.classes[hoveredClassIndex].children;
 
         setColumnsData(newColumnsData);
-    }    
+    }
 
     return (
         <SelectorContext.Provider value={{
