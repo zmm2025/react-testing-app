@@ -10,7 +10,7 @@ div.class-selector {
 
     /* Appearance */
     background: var(--neutral-0, #ffffff);
-    
+
     /* Other */
     scrollbar-width: none;
 }
@@ -67,7 +67,7 @@ button.cell {
     height: 40px;
     padding: 0px;
     width: 100%;
-    
+
     /* Text */
     font: inherit;
     text-align: start;
@@ -76,16 +76,16 @@ button.cell {
     background: none;
     border: none;
     cursor: pointer;
-    
+
     &.cell-selected {
         /* Appearance */
         background-color: var(--blue-500, #5596E6);
-    
+
         &:hover {
             /* Appearance */
             background-color: var(--blue-400, #3775D9);
         }
-    
+
         &:active {
             /* Appearance */
             background-color: var(--blue-500, #5596E6);
@@ -97,21 +97,21 @@ button.cell {
             /* Appearance */
             background-color: var(--neutral-100, #e2e2e2);
         }
-        
+
         &:active {
             /* Appearance */
             background-color: var(--neutral-200, #c7c7c7);
         }
-        
+
     }
-    
+
     p.cell-text {
         /* Layout */
         overflow: hidden;
         margin-left: 12px;
         margin-right: 12px;
         width: calc(100% - 40px);
-        
+
         /* Text */
         text-overflow: ellipsis;
         white-space: nowrap;
