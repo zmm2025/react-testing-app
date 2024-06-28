@@ -6,6 +6,7 @@ import "./ClassSelector.css";
 const SelectorContext = createContext({
     columnsData: [],
     selectClass: () => null,
+    deselectClass: () => null,
     hoverClass: () => null
 });
 
@@ -30,6 +31,7 @@ export default function ClassSelector() {
             hoveredClassID: null,
             classes: column1Classes
         },
+        emptyColumnData,
         emptyColumnData,
         emptyColumnData
     ];
@@ -73,6 +75,23 @@ export default function ClassSelector() {
         setColumnsData(newColumnsData);
     }
 
+    function deselectClass(classLevel) {
+        let newColumnsData = columnsData.slice(0, classLevel);
+
+        let deselectedColumnData = newColumnsData[classLevel - 1];
+        deselectedColumnData.selectedClassID = null;
+
+        newColumnsData.push(emptyColumnData);
+        newColumnsData.push(emptyColumnData);
+        // TODO: add/remove another?
+
+        const isAtFirstLevel = classLevel === 1;
+        const levelToCenter = classLevel + isAtFirstLevel;
+        centerLevelInView(levelToCenter);
+
+        setColumnsData(newColumnsData);
+    }
+
     function hoverClass(classID, level) {
         let newColumnsData = JSON.parse(JSON.stringify(columnsData)); // deep copy
 
@@ -89,6 +108,7 @@ export default function ClassSelector() {
         <SelectorContext.Provider value={{
             columnsData: columnsData,
             selectClass: selectClass,
+            deselectClass: deselectClass,
             hoverClass: hoverClass
         }}>
             <div ref={selectorRef} className={selectorCSSClass}>
@@ -210,7 +230,7 @@ function ColumnBody() {
 }
 
 function Cell({ cellClass }) {
-    const { selectClass, hoverClass } = useContext(SelectorContext);
+    const { selectClass, deselectClass, hoverClass } = useContext(SelectorContext);
     const { level, isHoverable, isPreviewColumn, columnData } = useContext(ColumnContext);
     const classHasChildren = cellClass.children.length > 0;
     const classIsSelected = columnData.selectedClassID === cellClass.id;
@@ -231,7 +251,11 @@ function Cell({ cellClass }) {
     }
 
     function handleClick() {
-        selectClass(cellClass.id, level);
+        if (columnData.selectedClassID === cellClass.id) {
+            deselectClass(level)
+        } else {
+            selectClass(cellClass.id, level);
+        }
     }
 
     return (
