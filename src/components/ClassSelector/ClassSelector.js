@@ -1,6 +1,7 @@
 import { Fragment, createContext, useContext, useRef, useState } from "react";
 import column1Classes from "../../data/classes.json";
 import { ReactComponent as RightChevron } from "../../images/chevron_right.svg";
+import Button from "../Button/Button";
 import "./ClassSelector.css";
 
 const SelectorContext = createContext({
@@ -143,21 +144,25 @@ export default function ClassSelector({ stageClassPath }) {
                         </Fragment>
                     );
                 })}
-                <FixedButton
+                <Button
                     type="tonal"
                     text="Back"
                     onClick={deselectClass}
                     enabled={classesAreSelected}
-                    xSide="left"
-                    ySide="bottom"
+                    style={{
+                        left: "calc(10vw + 16px)",
+                        bottom: "calc(10vh + 16px)"
+                    }}
                 />
-                <FixedButton
+                <Button
                     type="filled"
                     text="Select class"
                     onClick={stageSelectedClass}
                     enabled={classesAreSelected}
-                    xSide="right"
-                    ySide="bottom"
+                    style={{
+                        right: "calc(10vw + 16px)",
+                        bottom: "calc(10vh + 16px)"
+                    }}
                 />
             </div>
         </SelectorContext.Provider>
