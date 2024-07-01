@@ -1,5 +1,9 @@
 div.confirmation-window {
     /* Layout */
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
     padding: 100px;
 
     /* Appearance */
