@@ -136,14 +136,14 @@ function SelectorElements() {
             <FixedButton
                 type="tonal"
                 text="Back"
-                handleClick={() => null}
+                onClick={() => null}
                 xSide="left"
                 ySide="bottom"
             />
             <FixedButton
                 type="filled"
                 text="Select tag"
-                handleClick={() => null}
+                onClick={() => null}
                 xSide="right"
                 ySide="bottom"
             />
@@ -151,7 +151,7 @@ function SelectorElements() {
     );
 }
 
-function FixedButton({ type = "filled", text, handleClick, xSide, ySide }) {
+function FixedButton({ type = "filled", text, onClick: handleClick, xSide, ySide }) {
     const cssClassName = `fixed-button ${type}`;
     const xSideOffset = "calc(10vw + 16px)";
     const ySideOffset = "calc(10vh + 16px)";
