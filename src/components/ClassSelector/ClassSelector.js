@@ -115,14 +115,14 @@ export default function ClassSelector({ stageClassPath }) {
     }
 
     function stageSelectedClass() {
-        let classPath = columnsData.map((columnData) => {
+        const unfilteredClassPath = columnsData.map((columnData) => {
             let selectedClass = null;
             if (columnData.selectedClassID !== null) {
                 selectedClass = columnData.classes.find(columnClass => columnClass.id === columnData.selectedClassID)
             }
             return selectedClass;
         });
-        classPath.filter(pathClass => pathClass !== null);
+        const classPath = unfilteredClassPath.filter(pathClass => pathClass !== null);
         stageClassPath(classPath);
     }
 

@@ -25,7 +25,7 @@ function ClassPathText({ classPath }) {
     return (
         <div className={cssClassName}>
             {classPath.map((pathClass, index) => {
-                const isFirstClass = index !== 0;
+                const isFirstClass = index === 0;
                 return (
                     <Fragment key={index}>
                         {!isFirstClass && <p className={delimiterCSSClassName}> &gt; </p>} {/* "&gt;" == ">" */}
