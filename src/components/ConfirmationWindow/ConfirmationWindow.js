@@ -1,4 +1,5 @@
 import { Fragment } from "react";
+import Button from "../Button/Button";
 import "./ConfirmationWindow.css";
 
 export default function ConfirmationWindow({ stagedClassPath, confirmClassPath, selectionSource }) {
@@ -47,8 +48,29 @@ function BlameText({ source }) {
 }
 
 function ActionButtons() {
+    const cssClassName = "action-buttons";
+    
+    function confirm() {
+        return null;
+    }
+
+    function modify() {
+        return null;
+    }
+
     return (
-        null
+        <div className={cssClassName}>
+            <Button
+                type="filled"
+                text="Confirm"
+                onClick={confirm}
+            />
+            <Button
+                type="tonal"
+                text="Modify"
+                onClick={modify}
+            />
+        </div>
     );
 }
 
