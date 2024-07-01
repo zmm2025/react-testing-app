@@ -29,3 +29,9 @@ p.blame-text {
         color: var(--blue-500, #5596E6);
     }
 }
+
+div.action-buttons {
+    /* Layout */
+    display: flex;
+    gap: 16px;
+}
