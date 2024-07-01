@@ -52,11 +52,11 @@ export default function ClassSelector() {
         rightElement.scrollIntoView();
     }
 
-    function selectClass(classID, classLevel) {
-        let newColumnsData = columnsData.slice(0, classLevel);
+    function selectClass(id, level) {
+        let newColumnsData = columnsData.slice(0, level);
 
-        let selectedColumnData = newColumnsData[classLevel - 1];
-        selectedColumnData.selectedClassID = classID;
+        let selectedColumnData = newColumnsData[level - 1];
+        selectedColumnData.selectedClassID = id;
 
         let newNextColumnData = { ...emptyColumnData };
         const selectedClassIndex = selectedColumnData.classes.findIndex(columnClass => columnClass.id === selectedColumnData.selectedClassID);
@@ -67,37 +67,37 @@ export default function ClassSelector() {
         newColumnsData.push(emptyColumnData);
         newColumnsData.push(emptyColumnData);
 
-        const isAtFirstLevel = classLevel === 1;
+        const isAtFirstLevel = level === 1;
         const hasChildren = selectedClass.children.length > 0;
-        const levelToCenter = classLevel + (isAtFirstLevel || hasChildren);
+        const levelToCenter = level + (isAtFirstLevel || hasChildren);
         centerLevelInView(levelToCenter);
 
         setColumnsData(newColumnsData);
     }
 
-    function deselectClass(classLevel) {
-        let newColumnsData = columnsData.slice(0, classLevel);
+    function deselectClass(level) {
+        let newColumnsData = columnsData.slice(0, level);
 
-        let deselectedColumnData = newColumnsData[classLevel - 1];
+        let deselectedColumnData = newColumnsData[level - 1];
         deselectedColumnData.selectedClassID = null;
 
         newColumnsData.push(emptyColumnData);
         newColumnsData.push(emptyColumnData);
 
-        const isAtFirstLevel = classLevel === 1;
-        const levelToCenter = classLevel + isAtFirstLevel;
+        const isAtFirstLevel = level === 1;
+        const levelToCenter = level + isAtFirstLevel;
         centerLevelInView(levelToCenter);
 
         setColumnsData(newColumnsData);
     }
 
-    function hoverClass(classID, level) {
+    function hoverClass(id, level) {
         let newColumnsData = JSON.parse(JSON.stringify(columnsData)); // deep copy
 
         let hoveredColumnData = newColumnsData[level - 1];
-        hoveredColumnData.hoveredClassID = classID;
+        hoveredColumnData.hoveredClassID = id;
 
-        const hoveredClassIndex = hoveredColumnData.classes.findIndex(columnClass => columnClass.id === classID);
+        const hoveredClassIndex = hoveredColumnData.classes.findIndex(columnClass => columnClass.id === id);
         newColumnsData[level].classes = (hoveredClassIndex === -1) ? [] : hoveredColumnData.classes[hoveredClassIndex].children;
 
         setColumnsData(newColumnsData);
@@ -151,14 +151,14 @@ function SelectorElements() {
     );
 }
 
-function FixedButton({ type = "filled", text, onClick: handleClick, xSide, ySide }) {
+function FixedButton({ type = "filled", text, onClick, xSide, ySide }) {
     const cssClassName = `fixed-button ${type}`;
     const xSideOffset = "calc(10vw + 16px)";
     const ySideOffset = "calc(10vh + 16px)";
     const cssStyle = { [xSide]: xSideOffset, [ySide]: ySideOffset };
 
     return (
-        <button className={cssClassName} style={cssStyle} onClick={handleClick}>{text}</button>
+        <button className={cssClassName} style={cssStyle} onClick={onClick}>{text}</button>
     );
 }
 
