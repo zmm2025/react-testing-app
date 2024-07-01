@@ -21,29 +21,40 @@ button.fixed-button {
     position: absolute;
 
     /* Appearance */
-    cursor: pointer;
+    border-width: 1px;
+    border-style: solid;
 
     &.filled {
         /* Appearance */
         background-color: var(--brand-dark, #007070);
-        border: 1px solid var(--brand-ark, #007070);
+        border-color: var(--brand-ark, #007070);
         color: var(--neutral-0, #ffffff);
     }
 
     &.tonal {
-        /* Layout */
-        width: calc(inherit + 16px);
-
         /* Appearance */
         background-color: var(--neutral-100, #e2e2e2);
-        border: 1px solid var(--neutral-600, #5e5e5e);
+        border-color: var(--neutral-600, #5e5e5e);
+        color: var(--neutral-1000, #000000);
+    }
+    
+    &.enabled {
+        /* Appearance */
+        cursor: pointer;
+
+        &:active {
+            /* Appearance */
+            background-color: var(--neutral-800, #2e2e2e);
+            border-color: var(--neutral-800, #2e2e2e);
+            color: var(--neutral-0, #ffffff);
+        }
     }
 
-    &:active {
+    &.disabled {
         /* Appearance */
-        background-color: var(--neutral-800, #2e2e2e);
-        border: 1px solid var(--neutral-800, #2e2e2e);
-        color: var(--neutral-0, #ffffff);
+        background-color: var(--neutral-50, #f1f1f1);
+        border-color: var(--neutral-200, #c7c7c7);
+        color: var(--neutral-200, #c7c7c7);
     }
 }
 
