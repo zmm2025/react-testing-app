@@ -1,8 +1,8 @@
 import "./Button.css";
 
 export default function Button({ type = "filled", text, onClick, enabled = true, style = {} }) {
-    const enabledString = enabled ? "enabled" : "disabled";
-    const cssClassName = `button ${type} ${enabledString}`;
+    const toggle = enabled ? "enabled" : "disabled";
+    const cssClassName = `button ${type} ${toggle}`;
 
     function runOnClickIfEnabled() {
         if (enabled) {
