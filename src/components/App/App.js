@@ -6,17 +6,28 @@ import "./App.css";
 export default function App() {
     const initialStagedClassPath = [];
     const [stagedClassPath, setStagedClassPath] = useState(initialStagedClassPath);
+    const initialSelectionSource = "AVAIL AI";
+    const [selectionSource, setSelectionSource] = useState(initialSelectionSource);
 
     function confirmClassPath() {
         return null;
     }
 
+    function stageClassPath(classPath) {
+        setStagedClassPath(classPath);
+        setSelectionSource("you");
+    }
+
     return (
         <div className="app">
             {stagedClassPath.length > 0 ? (
-                <ConfirmationWindow stagedClassPath={stagedClassPath} confirmClassPath={confirmClassPath} />
+                <ConfirmationWindow
+                    stagedClassPath={stagedClassPath}
+                    confirmClassPath={confirmClassPath}
+                    selectionSource={selectionSource}
+                />
             ) : (
-                <ClassSelector stageClassPath={setStagedClassPath} />
+                <ClassSelector stageClassPath={stageClassPath} />
             )}
         </div>
     );

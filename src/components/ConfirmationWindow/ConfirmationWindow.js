@@ -1,12 +1,12 @@
 import { Fragment } from "react";
 import "./ConfirmationWindow.css";
 
-export default function ConfirmationWindow({ stagedClassPath, confirmClassPath }) {
+export default function ConfirmationWindow({ stagedClassPath, confirmClassPath, selectionSource }) {
     return (
         <div className="confirmation-window">
             <ContentPreview />
             <ClassPathText classPath={stagedClassPath}/>
-            <BlameText />
+            <BlameText source={selectionSource}/>
             <ActionButtons />
         </div>
     );
@@ -38,9 +38,11 @@ function ClassPathText({ classPath }) {
     );
 }
 
-function BlameText() {
+function BlameText({ source }) {
+    const cssClassName = `blame-text ${source === "AVAIL AI" ? "avail" : "other"}`;
+    
     return (
-        null
+        <p className={cssClassName}>Assigned by {source}</p>
     );
 }
 

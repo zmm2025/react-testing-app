@@ -17,3 +17,15 @@ div.class-path-text {
         color: var(--neutral-400, #919191);
     }
 }
+
+p.blame-text {
+    &.avail {
+        /* Appearance */
+        color: var(--brand-dark, #007070);
+    }
+
+    &.other {
+        /* Appearance */
+        color: var(--blue-500, #5596E6);
+    }
+}
