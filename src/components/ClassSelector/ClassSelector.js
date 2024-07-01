@@ -77,7 +77,16 @@ export default function ClassSelector() {
         setColumnsData(newColumnsData);
     }
 
-    function deselectClass(level) {
+    function deselectClass(level = null) {
+        if (level === null) {
+            const lastSelectedLevel = columnsData.findIndex(columnData => columnData.selectedClassID === null);
+            level = lastSelectedLevel;
+
+            if (level === 0) {
+                return;
+            }
+        }
+
         let newColumnsData = columnsData.slice(0, level);
 
         let deselectedColumnData = newColumnsData[level - 1];
@@ -105,10 +114,6 @@ export default function ClassSelector() {
         setColumnsData(newColumnsData);
     }
 
-    function returnClass() {
-
-    }
-
     function stageClass() {
 
     }
@@ -133,7 +138,7 @@ export default function ClassSelector() {
                 <FixedButton
                     type="tonal"
                     text="Back"
-                    onClick={returnClass}
+                    onClick={deselectClass}
                     xSide="left"
                     ySide="bottom"
                 />
@@ -155,8 +160,12 @@ function FixedButton({ type = "filled", text, onClick, xSide, ySide }) {
     const ySideOffset = "calc(10vh + 16px)";
     const cssStyle = { [xSide]: xSideOffset, [ySide]: ySideOffset };
 
+    function runOnClick() {
+        onClick();
+    }
+
     return (
-        <button className={cssClassName} style={cssStyle} onClick={onClick}>{text}</button>
+        <button className={cssClassName} style={cssStyle} onClick={runOnClick}>{text}</button>
     );
 }
 
