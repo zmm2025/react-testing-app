@@ -5,3 +5,15 @@ div.confirmation-window {
     /* Appearance */
     background: var(--neutral-0, #ffffff);
 }
+
+div.class-path-text {
+    p {
+        /* Layout */
+        display: inline;
+    }
+
+    p.delimiter {
+        /* Appearance */
+        color: var(--neutral-400, #919191);
+    }
+}

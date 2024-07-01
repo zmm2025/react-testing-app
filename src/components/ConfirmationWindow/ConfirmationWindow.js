@@ -20,7 +20,8 @@ function ContentPreview() {
 
 function ClassPathText({ classPath }) {
     const cssClassName = "class-path-text";
-    const delimiterCSSClassName = "divider";
+    const delimiterCSSClassName = "delimiter";
+    const textCSSClassName = "text";
     
     return (
         <div className={cssClassName}>
@@ -29,7 +30,7 @@ function ClassPathText({ classPath }) {
                 return (
                     <Fragment key={index}>
                         {!isFirstClass && <p className={delimiterCSSClassName}> &gt; </p>} {/* "&gt;" == ">" */}
-                        <p>{pathClass.name}</p>
+                        <p className={textCSSClassName}>{pathClass.name}</p>
                     </Fragment>
                 )
             })}
