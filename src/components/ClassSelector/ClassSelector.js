@@ -283,7 +283,12 @@ function Cell({ cellClass }) {
     }
 
     return (
-        <button className={cellCSSClass} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} onClick={handleClick}>
+        <button
+            className={cellCSSClass}
+            onMouseOver={handleMouseOver}
+            onMouseOut={handleMouseOut}
+            onClick={handleClick}
+        >
             <p className={textCSSClass}>{cellClass.name}</p>
             {classHasChildren && <RightChevron className={chevronCSSClass} />}
         </button>
