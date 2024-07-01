@@ -1,6 +1,6 @@
 import "./Button.css";
 
-export default function Button({ type = "filled", text, onClick, enabled = true, style }) {
+export default function Button({ type = "filled", text, onClick, enabled = true, style = {} }) {
     const enabledString = enabled ? "enabled" : "disabled";
     const cssClassName = `button ${type} ${enabledString}`;
 
