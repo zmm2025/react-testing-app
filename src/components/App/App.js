@@ -4,7 +4,8 @@ import ConfirmationWindow from "../ConfirmationWindow/ConfirmationWindow";
 import "./App.css";
 
 export default function App() {
-    const [stagedClassPath, setStagedClassPath] = useState([]);
+    const initialStagedClassPath = ["Site Products"];
+    const [stagedClassPath, setStagedClassPath] = useState(initialStagedClassPath);
 
     function confirmClassPath() {
         return null;

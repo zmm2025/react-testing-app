@@ -1,3 +1,7 @@
 div.confirmation-window {
+    /* Layout */
+    padding: 100px;
 
+    /* Appearance */
+    background: var(--neutral-0, #ffffff);
 }
