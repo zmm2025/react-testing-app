@@ -15,6 +15,38 @@ div.class-selector {
     scrollbar-width: none;
 }
 
+button.fixed-button {
+    /* Layout */
+    padding: 8px 16px;
+    position: absolute;
+
+    /* Appearance */
+    cursor: pointer;
+
+    &.filled {
+        /* Appearance */
+        background-color: var(--brand-dark, #007070);
+        border: 1px solid var(--brand-ark, #007070);
+        color: var(--neutral-0, #ffffff);
+    }
+
+    &.tonal {
+        /* Layout */
+        width: calc(inherit + 16px);
+
+        /* Appearance */
+        background-color: var(--neutral-100, #e2e2e2);
+        border: 1px solid var(--neutral-600, #5e5e5e);
+    }
+
+    &:active {
+        /* Appearance */
+        background-color: var(--neutral-800, #2e2e2e);
+        border: 1px solid var(--neutral-800, #2e2e2e);
+        color: var(--neutral-0, #ffffff);
+    }
+}
+
 div.column {
     /* Layout */
     max-width: calc((100% - 1px - 1px) / 3);

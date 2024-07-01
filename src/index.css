@@ -23,6 +23,10 @@ body {
   --neutral-950:  #080808;
   --neutral-1000: #000000;
   
+  --brand-light: #8AD3DD;
+  --brand:       #00A1A3;
+  --brand-dark:  #007070;
+
   --blue-50:  #F0F7FE;
   --blue-100: #DEECFB;
   --blue-200: #C5DFF8;

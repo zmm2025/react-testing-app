@@ -133,7 +133,32 @@ function SelectorElements() {
                     </Fragment>
                 );
             })}
+            <FixedButton
+                type="tonal"
+                text="Back"
+                handleClick={() => null}
+                xSide="left"
+                ySide="bottom"
+            />
+            <FixedButton
+                type="filled"
+                text="Select tag"
+                handleClick={() => null}
+                xSide="right"
+                ySide="bottom"
+            />
         </>
+    );
+}
+
+function FixedButton({ type = "filled", text, handleClick, xSide, ySide }) {
+    const cssClassName = `fixed-button ${type}`;
+    const xSideOffset = "calc(10vw + 16px)";
+    const ySideOffset = "calc(10vh + 16px)";
+    const cssStyle = { [xSide]: xSideOffset, [ySide]: ySideOffset };
+
+    return (
+        <button className={cssClassName} style={cssStyle} onClick={handleClick}>{text}</button>
     );
 }
 
