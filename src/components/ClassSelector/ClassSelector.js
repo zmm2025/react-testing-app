@@ -40,6 +40,7 @@ export default function ClassSelector() {
     const selectorCSSClass = "class-selector";
     let level = 1;
     const dividerOrientation = "vertical";
+    const classesAreSelected = columnsData[0].selectedClassID !== null;
 
     function centerLevelInView(level) {
         const centerElementIndex = 2 * (level - 1);
@@ -139,6 +140,7 @@ export default function ClassSelector() {
                     type="tonal"
                     text="Back"
                     onClick={deselectClass}
+                    enabled={classesAreSelected}
                     xSide="left"
                     ySide="bottom"
                 />
@@ -146,6 +148,7 @@ export default function ClassSelector() {
                     type="filled"
                     text="Select tag"
                     onClick={stageClass}
+                    enabled={classesAreSelected}
                     xSide="right"
                     ySide="bottom"
                 />
