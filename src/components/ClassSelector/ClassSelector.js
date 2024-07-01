@@ -150,6 +150,7 @@ export default function ClassSelector({ stageClassPath }) {
                     onClick={deselectClass}
                     enabled={classesAreSelected}
                     style={{
+                        position: "absolute",
                         left: "calc(10vw + 16px)",
                         bottom: "calc(10vh + 16px)"
                     }}
@@ -160,6 +161,7 @@ export default function ClassSelector({ stageClassPath }) {
                     onClick={stageSelectedClass}
                     enabled={classesAreSelected}
                     style={{
+                        position: "absolute",
                         right: "calc(10vw + 16px)",
                         bottom: "calc(10vh + 16px)"
                     }}
