@@ -38,6 +38,8 @@ export default function ClassSelector() {
     const [columnsData, setColumnsData] = useState(initialColumnsData);
     const selectorRef = useRef(null);
     const selectorCSSClass = "class-selector";
+    let level = 1;
+    const dividerOrientation = "vertical";
 
     function centerLevelInView(level) {
         const centerElementIndex = 2 * (level - 1);
@@ -111,43 +113,31 @@ export default function ClassSelector() {
             hoverClass: hoverClass
         }}>
             <div ref={selectorRef} className={selectorCSSClass}>
-                <SelectorElements />
+                {columnsData.map((_columnData, columnIndex) => {
+                    const isLastColumn = (columnIndex + 1) === columnsData.length;
+                    return (
+                        <Fragment key={columnIndex}>
+                            <Column level={level++} />
+                            {!isLastColumn && <Divider orientation={dividerOrientation} />}
+                        </Fragment>
+                    );
+                })}
+                <FixedButton
+                    type="tonal"
+                    text="Back"
+                    onClick={() => null}
+                    xSide="left"
+                    ySide="bottom"
+                />
+                <FixedButton
+                    type="filled"
+                    text="Select tag"
+                    onClick={() => null}
+                    xSide="right"
+                    ySide="bottom"
+                />
             </div>
         </SelectorContext.Provider>
-    );
-}
-
-function SelectorElements() {
-    const { columnsData } = useContext(SelectorContext);
-    let level = 1;
-    const dividerOrientation = "vertical";
-
-    return (
-        <>
-            {columnsData.map((_columnData, columnIndex) => {
-                const isLastColumn = (columnIndex + 1) === columnsData.length;
-                return (
-                    <Fragment key={columnIndex}>
-                        <Column level={level++} />
-                        {!isLastColumn && <Divider orientation={dividerOrientation} />}
-                    </Fragment>
-                );
-            })}
-            <FixedButton
-                type="tonal"
-                text="Back"
-                onClick={() => null}
-                xSide="left"
-                ySide="bottom"
-            />
-            <FixedButton
-                type="filled"
-                text="Select tag"
-                onClick={() => null}
-                xSide="right"
-                ySide="bottom"
-            />
-        </>
     );
 }
 
