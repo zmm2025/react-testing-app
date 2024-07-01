@@ -169,24 +169,6 @@ export default function ClassSelector({ stageClassPath }) {
     );
 }
 
-function FixedButton({ type = "filled", text, onClick, enabled = true, xSide, ySide }) {
-    const enabledString = enabled ? "enabled" : "disabled";
-    const cssClassName = `fixed-button ${type} ${enabledString}`;
-    const xSideOffset = "calc(10vw + 16px)";
-    const ySideOffset = "calc(10vh + 16px)";
-    const cssStyle = { [xSide]: xSideOffset, [ySide]: ySideOffset };
-
-    function runOnClickIfEnabled() {
-        if (enabled) {
-            onClick();
-        }
-    }
-
-    return (
-        <button className={cssClassName} style={cssStyle} onClick={runOnClickIfEnabled}>{text}</button>
-    );
-}
-
 function Column({ level }) {
     const { columnsData } = useContext(SelectorContext);
     const columnData = columnsData[level - 1];
