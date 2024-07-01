@@ -154,18 +154,20 @@ export default function ClassSelector() {
     );
 }
 
-function FixedButton({ type = "filled", text, onClick, xSide, ySide }) {
+function FixedButton({ type = "filled", text, onClick, enabled = true, xSide, ySide }) {
     const cssClassName = `fixed-button ${type}`;
     const xSideOffset = "calc(10vw + 16px)";
     const ySideOffset = "calc(10vh + 16px)";
     const cssStyle = { [xSide]: xSideOffset, [ySide]: ySideOffset };
 
-    function runOnClick() {
-        onClick();
+    function runOnClickIfEnabled() {
+        if (enabled) {
+            onClick();
+        }
     }
 
     return (
-        <button className={cssClassName} style={cssStyle} onClick={runOnClick}>{text}</button>
+        <button className={cssClassName} style={cssStyle} onClick={runOnClickIfEnabled}>{text}</button>
     );
 }
 
