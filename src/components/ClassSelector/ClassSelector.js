@@ -19,7 +19,7 @@ const ColumnContext = createContext({
     hoverColumnClass: () => null
 });
 
-export default function ClassSelector() {
+export default function ClassSelector({ stageClassPath }) {
     const emptyColumnData = {
         selectedClassID: null,
         hoveredClassID: null,
@@ -62,8 +62,7 @@ export default function ClassSelector() {
         selectedColumnData.selectedClassID = id;
 
         let newNextColumnData = { ...emptyColumnData };
-        const selectedClassIndex = selectedColumnData.classes.findIndex(columnClass => columnClass.id === selectedColumnData.selectedClassID);
-        const selectedClass = selectedColumnData.classes[selectedClassIndex];
+        const selectedClass = selectedColumnData.classes.find(columnClass => columnClass.id === selectedColumnData.selectedClassID);
         newNextColumnData.classes = selectedClass.children;
         newColumnsData.push(newNextColumnData);
 
@@ -109,14 +108,22 @@ export default function ClassSelector() {
         let hoveredColumnData = newColumnsData[level - 1];
         hoveredColumnData.hoveredClassID = id;
 
-        const hoveredClassIndex = hoveredColumnData.classes.findIndex(columnClass => columnClass.id === id);
-        newColumnsData[level].classes = (hoveredClassIndex === -1) ? [] : hoveredColumnData.classes[hoveredClassIndex].children;
+        const hoveredClass = hoveredColumnData.classes.find(columnClass => columnClass.id === id);
+        newColumnsData[level].classes = (hoveredClass === undefined) ? [] : hoveredClass.children;
 
         setColumnsData(newColumnsData);
     }
 
-    function stageClass() {
-
+    function stageSelectedClass() {
+        let classPath = columnsData.map((columnData) => {
+            let selectedClass = null;
+            if (columnData.selectedClassID !== null) {
+                selectedClass = columnData.classes.find(columnClass => columnClass.id === columnData.selectedClassID)
+            }
+            return selectedClass;
+        });
+        classPath.filter(pathClass => pathClass !== null);
+        stageClassPath(classPath);
     }
 
     return (
@@ -147,7 +154,7 @@ export default function ClassSelector() {
                 <FixedButton
                     type="filled"
                     text="Select class"
-                    onClick={stageClass}
+                    onClick={stageSelectedClass}
                     enabled={classesAreSelected}
                     xSide="right"
                     ySide="bottom"
