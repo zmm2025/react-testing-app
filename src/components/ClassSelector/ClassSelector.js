@@ -105,6 +105,14 @@ export default function ClassSelector() {
         setColumnsData(newColumnsData);
     }
 
+    function returnClass() {
+
+    }
+
+    function stageClass() {
+
+    }
+
     return (
         <SelectorContext.Provider value={{
             columnsData: columnsData,
@@ -125,14 +133,14 @@ export default function ClassSelector() {
                 <FixedButton
                     type="tonal"
                     text="Back"
-                    onClick={() => null}
+                    onClick={returnClass}
                     xSide="left"
                     ySide="bottom"
                 />
                 <FixedButton
                     type="filled"
                     text="Select tag"
-                    onClick={() => null}
+                    onClick={stageClass}
                     xSide="right"
                     ySide="bottom"
                 />
