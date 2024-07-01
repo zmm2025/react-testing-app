@@ -146,7 +146,7 @@ export default function ClassSelector() {
                 />
                 <FixedButton
                     type="filled"
-                    text="Select tag"
+                    text="Select class"
                     onClick={stageClass}
                     enabled={classesAreSelected}
                     xSide="right"
