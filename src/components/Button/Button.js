@@ -21,7 +21,12 @@ export default function Button({
     }
 
     return (
-        <button className={cssClassName} style={style} onClick={runOnClickIfEnabled}>
+        <button
+            className={cssClassName}
+            style={style}
+            onClick={runOnClickIfEnabled}
+            disabled={!enabled}
+        >
             {arrow === "left" && <LeftChevron className={chevronCSSClass} />}
             {text}
             {arrow === "right" && <RightChevron className={chevronCSSClass} />}
