@@ -34,7 +34,6 @@ export default function ClassSelector({ initialClassPath, stageClassPath }) {
     const dividerOrientation = "vertical";
     const classesAreSelected = columnsData[0].selectedClassID !== null;
 
-
     function classPathToColumnsData(classPath) {
         if (classPath.length === 0) {
             const columnsData = [
