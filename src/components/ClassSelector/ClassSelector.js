@@ -193,6 +193,7 @@ export default function ClassSelector({ initialClassPath, stageClassPath }) {
                     type="tonal"
                     text="Back"
                     onClick={deselectClass}
+                    arrow="left"
                     enabled={classesAreSelected}
                     style={{
                         position: "absolute",

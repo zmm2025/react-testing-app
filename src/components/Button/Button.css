@@ -1,5 +1,8 @@
 button.button {
     /* Layout */
+    display: flex;
+    gap: 4px;
+    line-height: 16px;
     padding: 8px 16px;
 
     /* Appearance */
@@ -29,6 +32,11 @@ button.button {
             background-color: var(--neutral-800, #2e2e2e);
             border-color: var(--neutral-800, #2e2e2e);
             color: var(--neutral-0, #ffffff);
+
+            svg {
+                /* Appearance */
+                fill: var(--neutral-0, #ffffff);
+            }
         }
     }
 
@@ -37,5 +45,37 @@ button.button {
         background-color: var(--neutral-50, #f1f1f1);
         border-color: var(--neutral-200, #c7c7c7);
         color: var(--neutral-200, #c7c7c7);
+    }
+
+    &.left {
+        /* Layout */
+        padding-left: 12px;
+    }
+
+    &.right {
+        /* Layout */
+        padding-right: 12px;
+    }
+}
+
+svg.chevron {
+    /* Layout */
+    height: 16px;
+    vertical-align: middle;
+    width: 16px;
+
+    &.filled {
+        /* Appearance */
+        fill: var(--neutral-0, #ffffff);
+    }
+
+    &.tonal {
+        /* Appearance */
+        fill: var(--neutral-1000, #000000);
+    }
+
+    &.disabled {
+        /* Appearance */
+        fill: var(--neutral-200, #c7c7c7);
     }
 }
