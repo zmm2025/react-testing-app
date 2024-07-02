@@ -30,7 +30,7 @@ export default function ClassSelector({ initialClassPath, stageClassPath }) {
     const [columnsData, setColumnsData] = useState(initialColumnsData);
     const selectorRef = useRef(null);
     const selectorCSSClass = "class-selector";
-    let level = 1;
+    let columnLevel = 1;
     const dividerOrientation = "vertical";
     const classesAreSelected = columnsData[0].selectedClassID !== null;
 
@@ -166,7 +166,7 @@ export default function ClassSelector({ initialClassPath, stageClassPath }) {
                     const isLastColumn = (columnIndex + 1) === columnsData.length;
                     return (
                         <Fragment key={columnIndex}>
-                            <Column level={level++} />
+                            <Column level={columnLevel++} />
                             {!isLastColumn && <Divider orientation={dividerOrientation} />}
                         </Fragment>
                     );
