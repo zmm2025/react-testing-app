@@ -1,4 +1,4 @@
-import { Fragment, createContext, useContext, useRef, useState } from "react";
+import { Fragment, createContext, useContext, useEffect, useRef, useState } from "react";
 import column1Classes from "../../data/classes.json";
 import { ReactComponent as RightChevron } from "../../images/chevron_right.svg";
 import Button from "../Button/Button";
@@ -33,6 +33,20 @@ export default function ClassSelector({ initialClassPath, stageClassPath }) {
     let columnLevel = 1;
     const dividerOrientation = "vertical";
     const classesAreSelected = columnsData[0].selectedClassID !== null;
+
+    useEffect(scrollToInitialEnd, [initialClassPath])
+
+    function scrollToInitialEnd() {
+        if (initialClassPath.length === 0) {
+            return;
+        }
+
+        const lastSelectedLevel = initialClassPath.length;
+        const onlyOneSelected = lastSelectedLevel === 1;
+        const lastSelectedHasChildren = initialClassPath[lastSelectedLevel - 1].children.length > 0;
+        const levelToCenter = lastSelectedLevel + (onlyOneSelected || lastSelectedHasChildren);
+        centerLevelInView(levelToCenter);
+    }
 
     function classPathToColumnsData(classPath) {
         if (classPath.length === 0) {
