@@ -335,6 +335,7 @@ function Cell({ cellClass }) {
     return (
         <button
             className={cellCSSClass}
+            title={cellClass.name}
             onMouseOver={handleMouseOver}
             onMouseOut={handleMouseOut}
             onClick={handleClick}
