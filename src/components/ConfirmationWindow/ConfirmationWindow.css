@@ -11,6 +11,9 @@ div.confirmation-window {
 }
 
 div.class-path-text {
+    /* Text */
+    text-align: center;
+    
     p {
         /* Layout */
         display: inline;
