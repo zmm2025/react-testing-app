@@ -36,18 +36,6 @@ export default function ClassSelector({ initialClassPath, stageClassPath }) {
 
     useEffect(scrollToInitialEnd, [initialClassPath])
 
-    function scrollToInitialEnd() {
-        if (initialClassPath.length === 0) {
-            return;
-        }
-
-        const lastSelectedLevel = initialClassPath.length;
-        const onlyOneSelected = lastSelectedLevel === 1;
-        const lastSelectedHasChildren = initialClassPath[lastSelectedLevel - 1].children.length > 0;
-        const levelToCenter = lastSelectedLevel + (onlyOneSelected || lastSelectedHasChildren);
-        centerLevelInView(levelToCenter);
-    }
-
     function classPathToColumnsData(classPath) {
         if (classPath.length === 0) {
             const columnsData = [
@@ -69,7 +57,7 @@ export default function ClassSelector({ initialClassPath, stageClassPath }) {
                 const previousClass = classPath[classIndex - 1];
                 columnClasses = previousClass.children;
             }
-            
+
             return {
                 selectedClassID: pathClass.id,
                 hoveredClassID: null,
@@ -95,6 +83,18 @@ export default function ClassSelector({ initialClassPath, stageClassPath }) {
 
         leftElement.scrollIntoView();
         rightElement.scrollIntoView();
+    }
+
+    function scrollToInitialEnd() {
+        if (initialClassPath.length === 0) {
+            return;
+        }
+
+        const lastSelectedLevel = initialClassPath.length;
+        const onlyOneSelected = lastSelectedLevel === 1;
+        const lastSelectedHasChildren = initialClassPath[lastSelectedLevel - 1].children.length > 0;
+        const levelToCenter = lastSelectedLevel + (onlyOneSelected || lastSelectedHasChildren);
+        centerLevelInView(levelToCenter);
     }
 
     function selectClass(id, level) {
