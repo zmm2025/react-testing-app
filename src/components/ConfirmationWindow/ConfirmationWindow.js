@@ -2,13 +2,17 @@ import { Fragment } from "react";
 import Button from "../Button/Button";
 import "./ConfirmationWindow.css";
 
-export default function ConfirmationWindow({ stagedClassPath, confirmClassPath, selectionSource }) {
+export default function ConfirmationWindow({ stagedClassPath, stageClassPath, confirmClassPath, selectionSource }) {
+    function clearClassPath() {
+        stageClassPath([]);
+    }
+    
     return (
         <div className="confirmation-window">
             <ContentPreview />
             <ClassPathText classPath={stagedClassPath}/>
             <BlameText source={selectionSource}/>
-            <ActionButtons />
+            <ActionButtons onConfirm={confirmClassPath} onModify={clearClassPath}/>
         </div>
     );
 }
@@ -47,28 +51,20 @@ function BlameText({ source }) {
     );
 }
 
-function ActionButtons() {
+function ActionButtons({ onConfirm, onModify }) {
     const cssClassName = "action-buttons";
-    
-    function confirm() {
-        return null;
-    }
-
-    function modify() {
-        return null;
-    }
 
     return (
         <div className={cssClassName}>
             <Button
                 type="filled"
                 text="Confirm"
-                onClick={confirm}
+                onClick={onConfirm}
             />
             <Button
                 type="tonal"
                 text="Modify"
-                onClick={modify}
+                onClick={onModify}
             />
         </div>
     );

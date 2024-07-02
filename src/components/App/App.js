@@ -23,6 +23,7 @@ export default function App() {
             {stagedClassPath.length > 0 ? (
                 <ConfirmationWindow
                     stagedClassPath={stagedClassPath}
+                    stageClassPath={stageClassPath}
                     confirmClassPath={confirmClassPath}
                     selectionSource={selectionSource}
                 />
