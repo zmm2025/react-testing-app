@@ -11,6 +11,8 @@ export default function Button({ type = "filled", text, onClick, enabled = true,
     }
 
     return (
-        <button className={cssClassName} style={style} onClick={runOnClickIfEnabled}>{text}</button>
+        <button className={cssClassName} style={style} onClick={runOnClickIfEnabled}>
+            {text}
+        </button>
     );
 }

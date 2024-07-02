@@ -13,7 +13,7 @@ div.confirmation-window {
 div.class-path-text {
     /* Text */
     text-align: center;
-    
+
     p {
         /* Layout */
         display: inline;
@@ -33,7 +33,7 @@ p.blame-text {
 
     &.other {
         /* Appearance */
-        color: var(--blue-500, #5596E6);
+        color: var(--blue-500, #5596e6);
     }
 }
 

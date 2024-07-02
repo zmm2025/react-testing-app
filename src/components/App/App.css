@@ -1,11 +1,11 @@
 .app {
-  /* Layout */
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    /* Layout */
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-  /* Appearance */
-  background: var(--neutral-900, #161616);
+    /* Appearance */
+    background: var(--neutral-900, #161616);
 }
