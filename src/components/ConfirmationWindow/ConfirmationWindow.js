@@ -2,17 +2,13 @@ import { Fragment } from "react";
 import Button from "../Button/Button";
 import "./ConfirmationWindow.css";
 
-export default function ConfirmationWindow({ stagedClassPath, stageClassPath, confirmClassPath, selectionSource }) {
-    function clearClassPath() {
-        stageClassPath([]);
-    }
-    
+export default function ConfirmationWindow({ stagedClassPath, unstageClassPath, confirmClassPath, selectionSource }) {
     return (
         <div className="confirmation-window">
             <ContentPreview />
             <ClassPathText classPath={stagedClassPath}/>
             <BlameText source={selectionSource}/>
-            <ActionButtons onConfirm={confirmClassPath} onModify={clearClassPath}/>
+            <ActionButtons onConfirm={confirmClassPath} onModify={unstageClassPath}/>
         </div>
     );
 }

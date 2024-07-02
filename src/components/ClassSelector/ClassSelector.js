@@ -20,28 +20,56 @@ const ColumnContext = createContext({
     hoverColumnClass: () => null
 });
 
-export default function ClassSelector({ stageClassPath }) {
+export default function ClassSelector({ initialClassPath, stageClassPath }) {
     const emptyColumnData = {
         selectedClassID: null,
         hoveredClassID: null,
         classes: []
     };
-    const initialColumnsData = [
-        {
-            selectedClassID: null,
-            hoveredClassID: null,
-            classes: column1Classes
-        },
-        emptyColumnData,
-        emptyColumnData,
-        emptyColumnData
-    ];
+    const initialColumnsData = classPathToColumnsData(initialClassPath);
     const [columnsData, setColumnsData] = useState(initialColumnsData);
     const selectorRef = useRef(null);
     const selectorCSSClass = "class-selector";
     let level = 1;
     const dividerOrientation = "vertical";
     const classesAreSelected = columnsData[0].selectedClassID !== null;
+
+
+    function classPathToColumnsData(classPath) {
+        if (classPath.length === 0) {
+            const columnsData = [
+                {
+                    selectedClassID: null,
+                    hoveredClassID: null,
+                    classes: column1Classes
+                },
+                emptyColumnData,
+                emptyColumnData,
+                emptyColumnData
+            ];
+            return columnsData;
+        }
+
+        const selectedColumnsData = classPath.map((pathClass, classIndex) => {
+            let columnClasses = column1Classes;
+            if (classIndex > 0) {
+                const previousClass = classPath[classIndex - 1];
+                columnClasses = previousClass.children;
+            }
+            
+            return {
+                selectedClassID: pathClass.id,
+                hoveredClassID: null,
+                classes: columnClasses
+            }
+        });
+        const columnsData = [
+            ...selectedColumnsData,
+            emptyColumnData,
+            emptyColumnData
+        ];
+        return columnsData;
+    }
 
     function centerLevelInView(level) {
         const centerElementIndex = 2 * (level - 1);
