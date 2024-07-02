@@ -1,0 +1,1589 @@
+[
+    {
+        "id": 11,
+        "name": "Site Products",
+        "children": [
+            {
+                "id": 11,
+                "name": "Ground Anchorages",
+                "children": [
+                    {
+                        "id": 11,
+                        "name": "Retaining Stabilizing Ground Anchors",
+                        "children": [
+                            {
+                                "id": 11,
+                                "name": "Retaining Stabilizing Ground Components",
+                                "children": [
+                                    {
+                                        "id": 11,
+                                        "name": "Stabilizing Ground Anchor Heads",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": 13,
+                                        "name": "Stabilizing Ground Tendons",
+                                        "children": []
+                                    }
+                                ]
+                            },
+                            {
+                                "id": 13,
+                                "name": "Stabilizing Ground Grouted Anchors",
+                                "children": []
+                            },
+                            {
+                                "id": 15,
+                                "name": "Stabilizing Ground Plate Anchors",
+                                "children": []
+                            },
+                            {
+                                "id": 17,
+                                "name": "Stabilizing Ground Rock Bolts",
+                                "children": []
+                            },
+                            {
+                                "id": 19,
+                                "name": "Stabilizing Ground Rock Anchors",
+                                "children": []
+                            },
+                            {
+                                "id": 21,
+                                "name": "Stabilizing Ground Anchor Tiebacks",
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": 13,
+                        "name": "Earth Reinforcement Anchors",
+                        "children": [
+                            {
+                                "id": 11,
+                                "name": "Earth Reinforcement Soil Nails",
+                                "children": []
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": 13,
+                "name": "Ground Improvement Products",
+                "children": [
+                    {
+                        "id": 11,
+                        "name": "Soil Stabilization Products",
+                        "children": [
+                            {
+                                "id": 11,
+                                "name": "Soil Stabilization Injectable Chemicals",
+                                "children": []
+                            },
+                            {
+                                "id": 13,
+                                "name": "Soil Stabilization Pressure Grouting",
+                                "children": []
+                            },
+                            {
+                                "id": 15,
+                                "name": "Ground Freezing Soil Stabilization",
+                                "children": []
+                            },
+                            {
+                                "id": 17,
+                                "name": "Soil Stabilization Fills",
+                                "children": [
+                                    {
+                                        "id": 11,
+                                        "name": "Soil Stabilization Fill Blocks",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": 13,
+                                        "name": "Soil Stabilization Compressible Fill",
+                                        "children": []
+                                    }
+                                ]
+                            },
+                            {
+                                "id": 19,
+                                "name": "Other Soil Stabilizations",
+                                "children": []
+                            },
+                            {
+                                "id": 21,
+                                "name": "Piped Field Drainage",
+                                "children": [
+                                    {
+                                        "id": 11,
+                                        "name": "Field Drainage Land Drainage Pipes",
+                                        "children": []
+                                    }
+                                ]
+                            },
+                            {
+                                "id": 23,
+                                "name": "Field Drainage Blocks",
+                                "children": []
+                            },
+                            {
+                                "id": 25,
+                                "name": "Field Drainage Geocomposite Drains",
+                                "children": [
+                                    {
+                                        "id": 11,
+                                        "name": "Field Drainage Geocomposite Edge Drains",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": 13,
+                                        "name": "Field Drainage Geocomposite In Place Wall Drains",
+                                        "children": []
+                                    }
+                                ]
+                            },
+                            {
+                                "id": 27,
+                                "name": "Geotextile Subsurface Drainage Filtration",
+                                "children": []
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": 15,
+                "name": "Sheeting and Revetments",
+                "children": [
+                    {
+                        "id": 11,
+                        "name": "Sheeting Geosynthetics",
+                        "children": [
+                            {
+                                "id": 11,
+                                "name": "Sheeting Geotextiles",
+                                "children": []
+                            },
+                            {
+                                "id": 13,
+                                "name": "Sheeting Geogrids",
+                                "children": []
+                            },
+                            {
+                                "id": 15,
+                                "name": "Sheeting Geomembranes",
+                                "children": []
+                            },
+                            {
+                                "id": 17,
+                                "name": "Sheeting Geocomposites",
+                                "children": []
+                            },
+                            {
+                                "id": 19,
+                                "name": "Sheeting Mulch Control Netting",
+                                "children": []
+                            },
+                            {
+                                "id": 21,
+                                "name": "Sheeting Synthetic Erosion Controls",
+                                "children": []
+                            },
+                            {
+                                "id": 23,
+                                "name": "Sheeting Re vegetation Mats",
+                                "children": []
+                            },
+                            {
+                                "id": 25,
+                                "name": "Sheeting Turf Reinforcement Mats",
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": 13,
+                        "name": "Revetments",
+                        "children": [
+                            {
+                                "id": 11,
+                                "name": "Revetment Soil Blankets",
+                                "children": []
+                            },
+                            {
+                                "id": 13,
+                                "name": "Pool Revetments",
+                                "children": []
+                            },
+                            {
+                                "id": 15,
+                                "name": "Trench Revetments",
+                                "children": []
+                            },
+                            {
+                                "id": 17,
+                                "name": "Revetment Rock Linings",
+                                "children": []
+                            },
+                            {
+                                "id": 19,
+                                "name": "Revetment Ripraps",
+                                "children": []
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": 17,
+                "name": "Retention Structures",
+                "children": [
+                    {
+                        "id": 11,
+                        "name": "Sheet Piles",
+                        "children": []
+                    },
+                    {
+                        "id": 13,
+                        "name": "Retaining Walls",
+                        "children": [
+                            {
+                                "id": 11,
+                                "name": "Retaining Diaphragm Walls",
+                                "children": [
+                                    {
+                                        "id": 11,
+                                        "name": "Retaining Slurry Wall Membranes",
+                                        "children": []
+                                    }
+                                ]
+                            },
+                            {
+                                "id": 13,
+                                "name": "Continuous Retaining Walls",
+                                "children": []
+                            },
+                            {
+                                "id": 15,
+                                "name": "Retaining Crib Walls",
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": 15,
+                        "name": "Gabions",
+                        "children": []
+                    },
+                    {
+                        "id": 17,
+                        "name": "Fascines",
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "id": 19,
+                "name": "Slide and Avalanche Protection",
+                "children": [
+                    {
+                        "id": 11,
+                        "name": "Bolt Down Snow Fences",
+                        "children": []
+                    },
+                    {
+                        "id": 13,
+                        "name": "Clamp on Equipment",
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "id": 21,
+                "name": "Pavements",
+                "children": [
+                    {
+                        "id": 11,
+                        "name": "Porous Paving",
+                        "children": []
+                    },
+                    {
+                        "id": 13,
+                        "name": "Roadways",
+                        "children": [
+                            {
+                                "id": 11,
+                                "name": "Portable Roadways",
+                                "children": []
+                            },
+                            {
+                                "id": 13,
+                                "name": "Roadway Surfacing",
+                                "children": [
+                                    {
+                                        "id": 11,
+                                        "name": "Roadway Antiskid Texturing",
+                                        "children": []
+                                    }
+                                ]
+                            },
+                            {
+                                "id": 15,
+                                "name": "Detectable Warning Surfaces for Roadways",
+                                "children": [
+                                    {
+                                        "id": 11,
+                                        "name": "Crosswalks",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": 13,
+                                        "name": "Warning Tiles",
+                                        "children": []
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": 15,
+                        "name": "Runways",
+                        "children": [
+                            {
+                                "id": 11,
+                                "name": "Portable Runway",
+                                "children": []
+                            },
+                            {
+                                "id": 13,
+                                "name": "Helicopter Landing Pads",
+                                "children": []
+                            },
+                            {
+                                "id": 15,
+                                "name": "Runway Surfacing",
+                                "children": [
+                                    {
+                                        "id": 11,
+                                        "name": "Runway Antiskid Texturing",
+                                        "children": []
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": 17,
+                        "name": "Paving Blocks",
+                        "children": [
+                            {
+                                "id": 11,
+                                "name": "Unit Pavers",
+                                "children": [
+                                    {
+                                        "id": 11,
+                                        "name": "Asphalt Block Pavers",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": 13,
+                                        "name": "Brick Pavers",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": 15,
+                                        "name": "Interlocking Precast Concrete Pavers",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": 17,
+                                        "name": "Precast Concrete Pavers",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": 19,
+                                        "name": "Pressed Pavers",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": 21,
+                                        "name": "Stone Pavers",
+                                        "children": []
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": 19,
+                        "name": "Pavement Slabs",
+                        "children": []
+                    },
+                    {
+                        "id": 21,
+                        "name": "Pavement Drainage",
+                        "children": [
+                            {
+                                "id": 11,
+                                "name": "Culverts",
+                                "children": [
+                                    {
+                                        "id": 11,
+                                        "name": "Pipe Culverts",
+                                        "children": [
+                                            {
+                                                "id": 11,
+                                                "name": "Metal Pipe Arch Culverts",
+                                                "children": []
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": 13,
+                                        "name": "Concrete Culverts",
+                                        "children": [
+                                            {
+                                                "id": 11,
+                                                "name": "Concrete Arch Buried Bridge Culverts",
+                                                "children": []
+                                            },
+                                            {
+                                                "id": 13,
+                                                "name": "Concrete Arch Culverts",
+                                                "children": []
+                                            },
+                                            {
+                                                "id": 15,
+                                                "name": "Concrete Box Culverts",
+                                                "children": []
+                                            },
+                                            {
+                                                "id": 17,
+                                                "name": "Concrete Rigid Frame Culverts",
+                                                "children": []
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "id": 13,
+                                "name": "Catch Basins",
+                                "children": []
+                            },
+                            {
+                                "id": 15,
+                                "name": "Channels",
+                                "children": []
+                            },
+                            {
+                                "id": 17,
+                                "name": "Cleanouts",
+                                "children": []
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": 23,
+                "name": "Parking Controls",
+                "children": [
+                    {
+                        "id": 11,
+                        "name": "Parking Meters",
+                        "children": []
+                    },
+                    {
+                        "id": 13,
+                        "name": "Parking Ticket Dispensers",
+                        "children": []
+                    },
+                    {
+                        "id": 15,
+                        "name": "Parking Coin Machine Units",
+                        "children": []
+                    },
+                    {
+                        "id": 17,
+                        "name": "Parking Key and Card Control Units",
+                        "children": []
+                    },
+                    {
+                        "id": 19,
+                        "name": "Parking Gates",
+                        "children": []
+                    },
+                    {
+                        "id": 21,
+                        "name": "Parking Dividers",
+                        "children": []
+                    },
+                    {
+                        "id": 23,
+                        "name": "Parking Signs",
+                        "children": [
+                            {
+                                "id": 11,
+                                "name": "Handicap Parking Signs",
+                                "children": []
+                            },
+                            {
+                                "id": 13,
+                                "name": "Parking Time Zone Signs",
+                                "children": []
+                            },
+                            {
+                                "id": 15,
+                                "name": "Parking Tow Away Signs",
+                                "children": []
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": 25,
+                "name": "Site Barrier Products",
+                "children": [
+                    {
+                        "id": 11,
+                        "name": "Perimeter Entry Devices",
+                        "children": [
+                            {
+                                "id": 11,
+                                "name": "Anti Ram Wedge Barriers",
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": 13,
+                        "name": "Perimeter Walls",
+                        "children": [
+                            {
+                                "id": 11,
+                                "name": "Precast Perimeter Concrete Panel Perimeter Walls",
+                                "children": []
+                            },
+                            {
+                                "id": 13,
+                                "name": "Precast Perimeter Post Perimeter Walls",
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": 15,
+                        "name": "Perimeter Gates",
+                        "children": [
+                            {
+                                "id": 11,
+                                "name": "Drop Arm Gates",
+                                "children": [
+                                    {
+                                        "id": 11,
+                                        "name": "Anti Ram Drop Arm Gates",
+                                        "children": []
+                                    }
+                                ]
+                            },
+                            {
+                                "id": 13,
+                                "name": "Rolling Gates",
+                                "children": []
+                            },
+                            {
+                                "id": 15,
+                                "name": "Sliding Gates",
+                                "children": [
+                                    {
+                                        "id": 11,
+                                        "name": "Anti Ram Sliding Gates",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": 13,
+                                        "name": "Anti Climb Sliding Gates",
+                                        "children": []
+                                    }
+                                ]
+                            },
+                            {
+                                "id": 17,
+                                "name": "Swinging Gates",
+                                "children": []
+                            },
+                            {
+                                "id": 19,
+                                "name": "Folding Gates",
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": 17,
+                        "name": "Gate Hardware",
+                        "children": []
+                    },
+                    {
+                        "id": 19,
+                        "name": "Fences",
+                        "children": [
+                            {
+                                "id": 11,
+                                "name": "Barbed Wire Fences",
+                                "children": []
+                            },
+                            {
+                                "id": 13,
+                                "name": "Concertina Wire Fences",
+                                "children": []
+                            },
+                            {
+                                "id": 15,
+                                "name": "Composite Fences",
+                                "children": []
+                            },
+                            {
+                                "id": 17,
+                                "name": "Ornamental Metal Fences",
+                                "children": []
+                            },
+                            {
+                                "id": 19,
+                                "name": "Chain Link Metal Fences",
+                                "children": []
+                            },
+                            {
+                                "id": 21,
+                                "name": "Panel Fences",
+                                "children": []
+                            },
+                            {
+                                "id": 23,
+                                "name": "Plastic Fences",
+                                "children": []
+                            },
+                            {
+                                "id": 25,
+                                "name": "Post Fences",
+                                "children": []
+                            },
+                            {
+                                "id": 27,
+                                "name": "Rail Fences",
+                                "children": []
+                            },
+                            {
+                                "id": 29,
+                                "name": "Razor Wire Fences",
+                                "children": []
+                            },
+                            {
+                                "id": 31,
+                                "name": "Wood Fences",
+                                "children": []
+                            },
+                            {
+                                "id": 33,
+                                "name": "Fencing Fabrics",
+                                "children": []
+                            },
+                            {
+                                "id": 35,
+                                "name": "Fencing Accessories",
+                                "children": [
+                                    {
+                                        "id": 11,
+                                        "name": "Barbed Wire",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": 13,
+                                        "name": "Concertina Wire",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": 15,
+                                        "name": "Fence Posts",
+                                        "children": []
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": 27,
+                "name": "Landscaping",
+                "children": [
+                    {
+                        "id": 11,
+                        "name": "Plant Maintenance and Preparation Products",
+                        "children": [
+                            {
+                                "id": 11,
+                                "name": "Topsoil",
+                                "children": [
+                                    {
+                                        "id": 11,
+                                        "name": "Loam",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": 13,
+                                        "name": "Peat Soil",
+                                        "children": []
+                                    }
+                                ]
+                            },
+                            {
+                                "id": 13,
+                                "name": "Soil Fertilizers",
+                                "children": []
+                            },
+                            {
+                                "id": 15,
+                                "name": "Soil Herbicides",
+                                "children": [
+                                    {
+                                        "id": 11,
+                                        "name": "Combined Soil Fertilizer and Herbicides",
+                                        "children": []
+                                    }
+                                ]
+                            },
+                            {
+                                "id": 17,
+                                "name": "Mulch",
+                                "children": []
+                            },
+                            {
+                                "id": 19,
+                                "name": "Soil Mats",
+                                "children": []
+                            },
+                            {
+                                "id": 21,
+                                "name": "Plant Netting",
+                                "children": []
+                            },
+                            {
+                                "id": 23,
+                                "name": "Landscaping Stakes",
+                                "children": []
+                            },
+                            {
+                                "id": 25,
+                                "name": "Landscaping Blankets",
+                                "children": []
+                            },
+                            {
+                                "id": 27,
+                                "name": "Landscaping Ground Covers",
+                                "children": []
+                            },
+                            {
+                                "id": 29,
+                                "name": "Landscaping Forms",
+                                "children": []
+                            },
+                            {
+                                "id": 31,
+                                "name": "Landscaping Stabilizers",
+                                "children": []
+                            },
+                            {
+                                "id": 33,
+                                "name": "Lime",
+                                "children": []
+                            },
+                            {
+                                "id": 35,
+                                "name": "Mowing Equipment",
+                                "children": [
+                                    {
+                                        "id": 11,
+                                        "name": "Lawnmowers",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": 13,
+                                        "name": "Garden Tractors",
+                                        "children": []
+                                    }
+                                ]
+                            },
+                            {
+                                "id": 37,
+                                "name": "Pruning Equipment",
+                                "children": []
+                            },
+                            {
+                                "id": 39,
+                                "name": "Watering Equipment",
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": 13,
+                        "name": "Planting Accessories",
+                        "children": [
+                            {
+                                "id": 11,
+                                "name": "Landscaping Edging",
+                                "children": []
+                            },
+                            {
+                                "id": 13,
+                                "name": "Landscape Timbers",
+                                "children": []
+                            },
+                            {
+                                "id": 15,
+                                "name": "Landscape Stone",
+                                "children": [
+                                    {
+                                        "id": 11,
+                                        "name": "Boulders",
+                                        "children": []
+                                    }
+                                ]
+                            },
+                            {
+                                "id": 17,
+                                "name": "Planters",
+                                "children": []
+                            },
+                            {
+                                "id": 19,
+                                "name": "Tree Grates",
+                                "children": []
+                            },
+                            {
+                                "id": 21,
+                                "name": "Tree Grids",
+                                "children": []
+                            },
+                            {
+                                "id": 23,
+                                "name": "Tree Guards",
+                                "children": []
+                            },
+                            {
+                                "id": 25,
+                                "name": "Plant Tubs",
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": 15,
+                        "name": "Irrigation Equipment",
+                        "children": [
+                            {
+                                "id": 11,
+                                "name": "Irrigation Sprinklers",
+                                "children": [
+                                    {
+                                        "id": 11,
+                                        "name": "Installed Sprinkler Heads",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": 13,
+                                        "name": "Portable Lawn Sprinklers",
+                                        "children": []
+                                    }
+                                ]
+                            },
+                            {
+                                "id": 13,
+                                "name": "Irrigation Hoses",
+                                "children": [
+                                    {
+                                        "id": 11,
+                                        "name": "Irrigation Weep Hoses",
+                                        "children": []
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": 17,
+                        "name": "Lawns and Grasses",
+                        "children": [
+                            {
+                                "id": 11,
+                                "name": "Hydro Mulch",
+                                "children": []
+                            },
+                            {
+                                "id": 13,
+                                "name": "Grass Plugs",
+                                "children": []
+                            },
+                            {
+                                "id": 15,
+                                "name": "Grass Seeds and Soil Supplements",
+                                "children": []
+                            },
+                            {
+                                "id": 17,
+                                "name": "Sod",
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": 19,
+                        "name": "Plants",
+                        "children": [
+                            {
+                                "id": 11,
+                                "name": "Shrubs",
+                                "children": []
+                            },
+                            {
+                                "id": 13,
+                                "name": "Trees",
+                                "children": []
+                            },
+                            {
+                                "id": 15,
+                                "name": "Plants",
+                                "children": []
+                            },
+                            {
+                                "id": 17,
+                                "name": "Plant Bulbs",
+                                "children": []
+                            },
+                            {
+                                "id": 19,
+                                "name": "Floral Plant",
+                                "children": []
+                            },
+                            {
+                                "id": 21,
+                                "name": "Non Flowering Plant",
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": 21,
+                        "name": "Pond Equipment",
+                        "children": [
+                            {
+                                "id": 11,
+                                "name": "Pond Liners",
+                                "children": []
+                            },
+                            {
+                                "id": 13,
+                                "name": "Pond Filters",
+                                "children": []
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": 29,
+                "name": "Site Furnishings",
+                "children": [
+                    {
+                        "id": 11,
+                        "name": "Bicycle Racks and Shelters",
+                        "children": [
+                            {
+                                "id": 11,
+                                "name": "Bicycle Racks",
+                                "children": []
+                            },
+                            {
+                                "id": 13,
+                                "name": "Bicycle Shelters",
+                                "children": []
+                            },
+                            {
+                                "id": 15,
+                                "name": "Bicycle Lockers",
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": 13,
+                        "name": "Exterior Seating",
+                        "children": [
+                            {
+                                "id": 11,
+                                "name": "Exterior Benches",
+                                "children": []
+                            },
+                            {
+                                "id": 13,
+                                "name": "Exterior Chairs",
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": 15,
+                        "name": "Exterior Tables",
+                        "children": []
+                    },
+                    {
+                        "id": 17,
+                        "name": "Patio Furniture",
+                        "children": [
+                            {
+                                "id": 11,
+                                "name": "Patio Seating",
+                                "children": [
+                                    {
+                                        "id": 11,
+                                        "name": "Patio Chairs",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": 13,
+                                        "name": "Patio Benches",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": 15,
+                                        "name": "Patio Chaise Lounges",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": 17,
+                                        "name": "Patio Sofas",
+                                        "children": []
+                                    }
+                                ]
+                            },
+                            {
+                                "id": 13,
+                                "name": "Patio Tables",
+                                "children": [
+                                    {
+                                        "id": 11,
+                                        "name": "Patio Dining Tables",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": 13,
+                                        "name": "Patio Sofa Tables",
+                                        "children": []
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": 19,
+                        "name": "Exterior Trash Receptacles",
+                        "children": [
+                            {
+                                "id": 11,
+                                "name": "Exterior Wood Trash Receptacles",
+                                "children": []
+                            },
+                            {
+                                "id": 13,
+                                "name": "Exterior Concrete Trash Receptacles",
+                                "children": []
+                            },
+                            {
+                                "id": 15,
+                                "name": "Exterior Metal Trash Receptacles",
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": 21,
+                        "name": "Exterior Specialties",
+                        "children": [
+                            {
+                                "id": 11,
+                                "name": "Sundials",
+                                "children": []
+                            },
+                            {
+                                "id": 13,
+                                "name": "Garden Ornaments",
+                                "children": []
+                            },
+                            {
+                                "id": 15,
+                                "name": "Bird Houses",
+                                "children": []
+                            },
+                            {
+                                "id": 17,
+                                "name": "Bird Feeders",
+                                "children": []
+                            },
+                            {
+                                "id": 19,
+                                "name": "Bird Baths",
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": 23,
+                        "name": "Exterior Storage Structures",
+                        "children": [
+                            {
+                                "id": 11,
+                                "name": "Storage Sheds",
+                                "children": []
+                            },
+                            {
+                                "id": 13,
+                                "name": "Barns",
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": 25,
+                        "name": "Flagpoles",
+                        "children": [
+                            {
+                                "id": 11,
+                                "name": "Automatic Flagpoles",
+                                "children": []
+                            },
+                            {
+                                "id": 13,
+                                "name": "Ground Set Flagpoles",
+                                "children": []
+                            },
+                            {
+                                "id": 15,
+                                "name": "Nautical Flagpoles",
+                                "children": []
+                            },
+                            {
+                                "id": 17,
+                                "name": "Wall Mounted Flagpoles",
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": 27,
+                        "name": "Exterior Fountains",
+                        "children": [
+                            {
+                                "id": 11,
+                                "name": "Exterior Ornamental Fountains",
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": 29,
+                        "name": "Memorials and Statuary",
+                        "children": []
+                    },
+                    {
+                        "id": 31,
+                        "name": "Monuments",
+                        "children": []
+                    },
+                    {
+                        "id": 33,
+                        "name": "Exterior Directional Signs",
+                        "children": [
+                            {
+                                "id": 11,
+                                "name": "Finger Post Signs",
+                                "children": []
+                            },
+                            {
+                                "id": 13,
+                                "name": "Street nameplates",
+                                "children": []
+                            },
+                            {
+                                "id": 15,
+                                "name": "Illuminated Directional Signs",
+                                "children": []
+                            },
+                            {
+                                "id": 17,
+                                "name": "Directional Sign Markers",
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": 35,
+                        "name": "Bollards",
+                        "children": [
+                            {
+                                "id": 11,
+                                "name": "Active Anti Ram Bollards",
+                                "children": []
+                            },
+                            {
+                                "id": 13,
+                                "name": "Passive Anti Ram Bollards",
+                                "children": []
+                            },
+                            {
+                                "id": 15,
+                                "name": "Architectural Bollards",
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": 37,
+                        "name": "Public Lighting Columns",
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "id": 31,
+                "name": "Athletic and Recreational Surfaces",
+                "children": [
+                    {
+                        "id": 11,
+                        "name": "Sports Field Surfacing",
+                        "children": []
+                    },
+                    {
+                        "id": 13,
+                        "name": "Playground Surfaces",
+                        "children": []
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 27,
+        "name": "Landscaping",
+        "children": [
+            {
+                "id": 11,
+                "name": "Plant Maintenance and Preparation Products",
+                "children": [
+                    {
+                        "id": 11,
+                        "name": "Topsoil",
+                        "children": [
+                            {
+                                "id": 11,
+                                "name": "Loam",
+                                "children": []
+                            },
+                            {
+                                "id": 13,
+                                "name": "Peat Soil",
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": 13,
+                        "name": "Soil Fertilizers",
+                        "children": []
+                    },
+                    {
+                        "id": 15,
+                        "name": "Soil Herbicides",
+                        "children": [
+                            {
+                                "id": 11,
+                                "name": "Combined Soil Fertilizer and Herbicides",
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": 17,
+                        "name": "Mulch",
+                        "children": []
+                    },
+                    {
+                        "id": 19,
+                        "name": "Soil Mats",
+                        "children": []
+                    },
+                    {
+                        "id": 21,
+                        "name": "Plant Netting",
+                        "children": []
+                    },
+                    {
+                        "id": 23,
+                        "name": "Landscaping Stakes",
+                        "children": []
+                    },
+                    {
+                        "id": 25,
+                        "name": "Landscaping Blankets",
+                        "children": []
+                    },
+                    {
+                        "id": 27,
+                        "name": "Landscaping Ground Covers",
+                        "children": []
+                    },
+                    {
+                        "id": 29,
+                        "name": "Landscaping Forms",
+                        "children": []
+                    },
+                    {
+                        "id": 31,
+                        "name": "Landscaping Stabilizers",
+                        "children": []
+                    },
+                    {
+                        "id": 33,
+                        "name": "Lime",
+                        "children": []
+                    },
+                    {
+                        "id": 35,
+                        "name": "Mowing Equipment",
+                        "children": [
+                            {
+                                "id": 11,
+                                "name": "Lawnmowers",
+                                "children": []
+                            },
+                            {
+                                "id": 13,
+                                "name": "Garden Tractors",
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": 37,
+                        "name": "Pruning Equipment",
+                        "children": []
+                    },
+                    {
+                        "id": 39,
+                        "name": "Watering Equipment",
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "id": 13,
+                "name": "Planting Accessories",
+                "children": [
+                    {
+                        "id": 11,
+                        "name": "Landscaping Edging",
+                        "children": []
+                    },
+                    {
+                        "id": 13,
+                        "name": "Landscape Timbers",
+                        "children": []
+                    },
+                    {
+                        "id": 15,
+                        "name": "Landscape Stone",
+                        "children": [
+                            {
+                                "id": 11,
+                                "name": "Boulders",
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": 17,
+                        "name": "Planters",
+                        "children": []
+                    },
+                    {
+                        "id": 19,
+                        "name": "Tree Grates",
+                        "children": []
+                    },
+                    {
+                        "id": 21,
+                        "name": "Tree Grids",
+                        "children": []
+                    },
+                    {
+                        "id": 23,
+                        "name": "Tree Guards",
+                        "children": []
+                    },
+                    {
+                        "id": 25,
+                        "name": "Plant Tubs",
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "id": 15,
+                "name": "Irrigation Equipment",
+                "children": [
+                    {
+                        "id": 11,
+                        "name": "Irrigation Sprinklers",
+                        "children": [
+                            {
+                                "id": 11,
+                                "name": "Installed Sprinkler Heads",
+                                "children": []
+                            },
+                            {
+                                "id": 13,
+                                "name": "Portable Lawn Sprinklers",
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": 13,
+                        "name": "Irrigation Hoses",
+                        "children": [
+                            {
+                                "id": 11,
+                                "name": "Irrigation Weep Hoses",
+                                "children": []
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": 17,
+                "name": "Lawns and Grasses",
+                "children": [
+                    {
+                        "id": 11,
+                        "name": "Hydro Mulch",
+                        "children": []
+                    },
+                    {
+                        "id": 13,
+                        "name": "Grass Plugs",
+                        "children": []
+                    },
+                    {
+                        "id": 15,
+                        "name": "Grass Seeds and Soil Supplements",
+                        "children": []
+                    },
+                    {
+                        "id": 17,
+                        "name": "Sod",
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "id": 19,
+                "name": "Plants",
+                "children": [
+                    {
+                        "id": 11,
+                        "name": "Shrubs",
+                        "children": []
+                    },
+                    {
+                        "id": 13,
+                        "name": "Trees",
+                        "children": []
+                    },
+                    {
+                        "id": 15,
+                        "name": "Plants",
+                        "children": []
+                    },
+                    {
+                        "id": 17,
+                        "name": "Plant Bulbs",
+                        "children": []
+                    },
+                    {
+                        "id": 19,
+                        "name": "Floral Plant",
+                        "children": []
+                    },
+                    {
+                        "id": 21,
+                        "name": "Non Flowering Plant",
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "id": 21,
+                "name": "Pond Equipment",
+                "children": [
+                    {
+                        "id": 11,
+                        "name": "Pond Liners",
+                        "children": []
+                    },
+                    {
+                        "id": 13,
+                        "name": "Pond Filters",
+                        "children": []
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 15,
+        "name": "Irrigation Equipment",
+        "children": [
+            {
+                "id": 11,
+                "name": "Irrigation Sprinklers",
+                "children": [
+                    {
+                        "id": 11,
+                        "name": "Installed Sprinkler Heads",
+                        "children": []
+                    },
+                    {
+                        "id": 13,
+                        "name": "Portable Lawn Sprinklers",
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "id": 13,
+                "name": "Irrigation Hoses",
+                "children": [
+                    {
+                        "id": 11,
+                        "name": "Irrigation Weep Hoses",
+                        "children": []
+                    }
+                ]
+            }
+        ]
+    }
+]

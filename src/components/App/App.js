@@ -1,13 +1,15 @@
 import { useState } from "react";
+import samplePath from "../../data/sample-path.json";
 import ClassSelector from "../ClassSelector/ClassSelector";
 import ConfirmationWindow from "../ConfirmationWindow/ConfirmationWindow";
 import "./App.css";
 
 export default function App() {
-    const initialStagedClassPath = [];
+    const initialStagedClassPath = samplePath;
     const initialSelectionSource = "AVAIL AI";
     const [stagedClassPath, setStagedClassPath] = useState(initialStagedClassPath);
-    const [pathIsStaged, setPathIsStaged] = useState(false);
+    // Keep this as "useState(true)" once AI class path assignment is linked:
+    const [pathIsStaged, setPathIsStaged] = useState(true);
     const [selectionSource, setSelectionSource] = useState(initialSelectionSource);
 
     function confirmClassPath() {
